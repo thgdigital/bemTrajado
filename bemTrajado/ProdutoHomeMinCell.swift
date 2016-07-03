@@ -11,6 +11,27 @@ import UIKit
 
 class ProdutoHomeMinCell: BaseCell {
     
+     
+  
+    var produtos: Produtos?{
+        didSet {
+            if let nome = produtos?.titulo {
+                nameLabel.text = nome
+            }
+            if let preco = produtos?.preco {
+                namePreco.text = "R$ \(preco)"
+            }
+            if let image = produtos?.image {
+                
+                let url = "http://thiago.conquist.com.br/upload/"
+                
+                imageView.loadImageUsingUrlString(url+image)
+               
+            }
+        }
+        
+    }
+    
     override func setupViews() {
         super.setupViews()
         addSubview(imageView)
@@ -24,9 +45,9 @@ class ProdutoHomeMinCell: BaseCell {
         
     }
     
-    let imageView : UIImageView = {
+    let imageView : CustomImageView = {
         
-        let iv = UIImageView()
+        let iv = CustomImageView()
         iv.image = UIImage(named: "blusa")
         iv.contentMode = .ScaleAspectFill
         iv.layer.masksToBounds = true

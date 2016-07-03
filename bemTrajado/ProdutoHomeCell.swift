@@ -11,13 +11,27 @@ import UIKit
 
 class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
+  
+    
     private let cellId = "cellId"
+    
+    var homeController : HomeController?
     
     var categoria: Categoria? {
         
         didSet {
+            
+            if let nome = categoria?.titulo {
+                 nameLabel.text = nome
+            }
+            collectionView.reloadData()
         }
+        
     }
+    
+   
+    
+    
     
     let collectionView : UICollectionView = {
         let layout  = UICollectionViewFlowLayout()
@@ -44,10 +58,22 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         return view
     }()
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProdutoHomeMinCell
+        cell.produtos = categoria?.produtos?[indexPath.item]
+        
+        
+        return cell
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        
+        if let count = categoria?.produtos?.count {
+            
+            return count
+        }
+         
+        
+        return 0
+       
     }
    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -58,7 +84,11 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath)
+        if let app = categoria?.produtos?[indexPath.item]{
+          
+           // print(app)
+            homeController?.showAppDetailForApp(app)
+        }
     }
     override func setupViews() {
         super.setupViews()
@@ -78,9 +108,6 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         
         addConstraintsWithFormat("H:|-14-[v0]", views: nameLabel)
         addConstraintsWithFormat("V:|-4-[v0]", views: nameLabel)
-        
-        
-        
         
         addConstraintsWithFormat("H:|[v0]|", views: dividiView)
         addConstraintsWithFormat("V:[v0(1)]|", views: dividiView)

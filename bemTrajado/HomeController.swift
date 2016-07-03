@@ -30,16 +30,27 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         titleLabel.font = UIFont.systemFontOfSize(20)
         navigationItem.titleView = titleLabel
         
-//        Categoria.categoriasProdutos { (categoria) in
-//
-//            print(categoria)
-//            
-//             self.collectionView?.reloadData()
-//        }
+        Categoria.categoriasProdutos { (categoria) in
+
+            self.categorias = categoria
+            self.collectionView?.reloadData()
+        }
+        
+       
+        
+        
+        
         collectionView?.registerClass(ProdutoHomeCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.registerClass(HomeHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: cellHeaderId)
         
+    }
+    
+    func showAppDetailForApp(produto: Produtos) {
+        let layout = UICollectionViewFlowLayout()
+        let singleProdutoController = SingleProdutoController(collectionViewLayout: layout)
+        singleProdutoController.produto = produto
+        navigationController?.pushViewController(singleProdutoController, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -49,7 +60,10 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: cellHeaderId, forIndexPath: indexPath)
     }
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if let cout = categorias?.count {
+            return cout
+        }
+        return 0
     }
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -57,7 +71,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
          let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProdutoHomeCell
         
         cell.categoria = categorias?[indexPath.item]
-        
+        cell.homeController = self
         return cell
         
     }

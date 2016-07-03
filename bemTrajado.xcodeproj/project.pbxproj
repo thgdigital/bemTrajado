@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8433EA671D285CA7000D78CA /* SingleProdutoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433EA661D285CA7000D78CA /* SingleProdutoController.swift */; };
+		8433EA691D286BE2000D78CA /* HeaderSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433EA681D286BE2000D78CA /* HeaderSingleCell.swift */; };
+		8433EA6B1D286EDB000D78CA /* SingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433EA6A1D286EDB000D78CA /* SingleCell.swift */; };
+		8433EA6D1D2884C8000D78CA /* GaleriaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433EA6C1D2884C8000D78CA /* GaleriaCell.swift */; };
 		846077301D1DE6BF00773246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460772F1D1DE6BF00773246 /* AppDelegate.swift */; };
 		846077321D1DE6BF00773246 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846077311D1DE6BF00773246 /* HomeController.swift */; };
 		846077351D1DE6BF00773246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846077331D1DE6BF00773246 /* Main.storyboard */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8433EA661D285CA7000D78CA /* SingleProdutoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleProdutoController.swift; sourceTree = "<group>"; };
+		8433EA681D286BE2000D78CA /* HeaderSingleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSingleCell.swift; sourceTree = "<group>"; };
+		8433EA6A1D286EDB000D78CA /* SingleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleCell.swift; sourceTree = "<group>"; };
+		8433EA6C1D2884C8000D78CA /* GaleriaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GaleriaCell.swift; path = Assets.xcassets/GaleriaCell.swift; sourceTree = "<group>"; };
 		8460772C1D1DE6BF00773246 /* bemTrajado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bemTrajado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8460772F1D1DE6BF00773246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846077311D1DE6BF00773246 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -93,8 +101,11 @@
 				846077421D1DEB4500773246 /* BaseCell.swift */,
 				846077441D1DEB7E00773246 /* ProdutoHomeCell.swift */,
 				846077491D1E110000773246 /* HomeHeaderCell.swift */,
+				8433EA681D286BE2000D78CA /* HeaderSingleCell.swift */,
 				8460774C1D1E1AFC00773246 /* ProdutoHomeMinCell.swift */,
 				846077571D1F1FD000773246 /* LocalizacaoCell.swift */,
+				8433EA6A1D286EDB000D78CA /* SingleCell.swift */,
+				8433EA6C1D2884C8000D78CA /* GaleriaCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -113,6 +124,7 @@
 				846077311D1DE6BF00773246 /* HomeController.swift */,
 				846077531D1F06AA00773246 /* TabCustomController.swift */,
 				846077551D1F1AB600773246 /* LocalizacaoController.swift */,
+				8433EA661D285CA7000D78CA /* SingleProdutoController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -198,10 +210,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8433EA691D286BE2000D78CA /* HeaderSingleCell.swift in Sources */,
+				8433EA6D1D2884C8000D78CA /* GaleriaCell.swift in Sources */,
+				8433EA671D285CA7000D78CA /* SingleProdutoController.swift in Sources */,
 				846077561D1F1AB600773246 /* LocalizacaoController.swift in Sources */,
 				846077321D1DE6BF00773246 /* HomeController.swift in Sources */,
 				846077581D1F1FD000773246 /* LocalizacaoCell.swift in Sources */,
 				846077521D1EF08800773246 /* Produtos.swift in Sources */,
+				8433EA6B1D286EDB000D78CA /* SingleCell.swift in Sources */,
 				846077501D1EEF4100773246 /* Categoria.swift in Sources */,
 				8460774A1D1E110000773246 /* HomeHeaderCell.swift in Sources */,
 				846077431D1DEB4500773246 /* BaseCell.swift in Sources */,
@@ -361,6 +377,7 @@
 				846077401D1DE6C000773246 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

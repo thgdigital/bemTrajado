@@ -21,7 +21,7 @@ class TabCustomController: UITabBarController {
         
         let carrinho = UINavigationController(rootViewController: UIViewController())
         carrinho.tabBarItem.image = UIImage(named: "ic_local_grocery_store")
-        carrinho.tabBarItem.title = "Pedidos"
+        carrinho.tabBarItem.title = "Listar de desejos"
         
         
         let localicao = LocalizacaoController(collectionViewLayout: UICollectionViewFlowLayout())
