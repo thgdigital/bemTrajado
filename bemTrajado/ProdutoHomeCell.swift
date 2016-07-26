@@ -85,9 +85,19 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if let app = categoria?.produtos?[indexPath.item]{
+            
+            if let id = app.id {
+                var produto = Produtos()
+                Produtos.getProduto(id) { (Produtos) in
+                    produto = Produtos
+                      self.homeController?.showAppDetailForApp(produto)
+                }
+               
+            }
+            
           
            // print(app)
-            homeController?.showAppDetailForApp(app)
+          
         }
     }
     override func setupViews() {

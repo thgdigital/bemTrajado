@@ -10,6 +10,7 @@ import UIKit
 
 class HeaderSingleCell: BaseCell {
     
+    var singleController : SingleProdutoController?
     
     var produto: Produtos? {
         didSet {
@@ -30,6 +31,7 @@ class HeaderSingleCell: BaseCell {
         iv.image = UIImage(named: "banner")
         iv.contentMode = .ScaleAspectFill
         iv.layer.masksToBounds = true
+        iv.userInteractionEnabled = true
         return iv
     }()
     
@@ -54,7 +56,14 @@ class HeaderSingleCell: BaseCell {
         addConstraintsWithFormat("V:[v0(1)]|", views: dividiView)
         
         
+        //imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animate)))
+        
     }
+//    
+//    func animate() {
+//        
+//        singleController?.animateImageView(imageView)
+//    }
     
     
 }

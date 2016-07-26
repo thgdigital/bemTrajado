@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class GalerialCell: BaseCell {
+    var singleController: SingleProdutoController?
     
+    var galeria: Galeria? {
+        didSet {
+            if let image = galeria?.image {
+                
+                let url = "http://thiago.conquist.com.br/upload/"
+                
+                imageView.kf_setImageWithURL(NSURL(string: url+image))
+            }
+        }
+    }
     
     let imageView: CustomImageView = {
         let iv = CustomImageView()
         iv.image = UIImage(named: "blusa")
         iv.contentMode = .ScaleAspectFill
         iv.layer.masksToBounds = true
+        iv.userInteractionEnabled = true
         return iv
     }()
     
@@ -24,7 +38,11 @@ class GalerialCell: BaseCell {
         addSubview(imageView)
         addConstraintsWithFormat("H:|[v0]|", views: imageView)
         addConstraintsWithFormat("H:|[v0]|", views: imageView)
-        backgroundColor = UIColor.blueColor()
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GalerialCell.animate)))
         
+    }
+    func animate() {
+      
+        singleController?.animateImageView(imageView)
     }
 }

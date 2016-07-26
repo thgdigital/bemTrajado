@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+
 
 class Categoria: NSObject {
     
@@ -14,8 +18,8 @@ class Categoria: NSObject {
     var titulo : String?
     var descricao: String?
     var image: String?
-    var created_at: NSDate?
-    var updated_at: NSDate?
+    var created_at: String?
+    var updated_at: String?
     
     var produtos: [Produtos]?
 
@@ -24,67 +28,56 @@ class Categoria: NSObject {
         
         let urlString = "http://thiago.conquist.com.br/api/categoria"
         
-        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: urlString)!) { (data, response, error) -> Void in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            
-            do {
-                
-                let json = try(NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers))
-                var categorias = [Categoria]()
-                
-                
-                for dictionary in json as! [[String: AnyObject]] {
-                    
-                    let categoria = Categoria()
-                    
-                    categoria.id = dictionary["id"] as? NSNumber
-                    categoria.titulo = dictionary["titulo"] as? String
-                    categoria.descricao = dictionary["descricao"] as? String
-                    categoria.image = dictionary["image"] as? String
-                    categoria.created_at = dictionary["created_at"] as? NSDate
-                    categoria.created_at = dictionary["updated_at"] as? NSDate
-                    categoria.produtos = [Produtos]()
-                     let produtoDictionary = dictionary["produtos"] as! [[String: AnyObject]]
-                    
+        Alamofire.request(.GET, urlString)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if response.result.value is NSArray {
                         
-                        let produto = Produtos()
-                    
-                    
-                        for prod in produtoDictionary {
-                    
-                            produto.id = prod["id"] as? NSNumber
-                            produto.titulo = prod["titulo"] as? String
-                            produto.descricao = prod["descricao"] as? String
-                            produto.image = prod["image"] as? String
-                            produto.preco = prod["preco"] as? String
-                            produto.marca_id = prod["marca_id"] as? String
-                            produto.qtd = prod["qtd"] as? String
-                            produto.created_at = prod["created_at"] as? String
-                            produto.updated_at = prod["updated_at"] as? String
-            
-                            categoria.produtos?.append(produto)
-                            
-                    }
-                    if categoria.produtos?.count > 0 {
+                        if let jsonObject = response.result.value {
+                            let json = JSON(jsonObject)
+                            var categorias = [Categoria]()
                         
-                        categorias.append(categoria)
+                            for (_, subJson):(String, JSON) in json {
+                                let categoria = Categoria()
+                                categoria.id = subJson["id"].number
+                                categoria.titulo = subJson["titulo"].stringValue
+                                categoria.descricao = subJson["descricao"].stringValue
+                                categoria.image = subJson["image"].stringValue
+                                categoria.created_at = subJson["created_at"].stringValue
+                                categoria.created_at = subJson["updated_at"].stringValue
+                                categoria.produtos = [Produtos]()
+                                let produtoDictionary = subJson["produtos"].arrayValue
+                                
+                                for prod in produtoDictionary {
+                                    let produto = Produtos()
+                                    produto.id = prod["id"].number
+                                    
+                                    produto.titulo = prod["titulo"].stringValue
+                                    produto.descricao = prod["descricao"].stringValue
+                                    produto.image = prod["image"].stringValue
+                                    produto.preco = prod["preco"].stringValue
+                                    produto.marca_id = prod["marca_id"].stringValue
+                                    produto.qtd = prod["qtd"].stringValue
+                                    produto.created_at = prod["created_at"].stringValue
+                                    produto.updated_at = prod["updated_at"].stringValue
+                                            
+                                    categoria.produtos?.append(produto)
+                                    
+                                    }
+                                    if categoria.produtos?.count > 0 {
+                                        categorias.append(categoria)
+                                    }
+                                }
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completionHandler(categorias)
+                                })
+                            }
                     }
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completionHandler(categorias)
-                })
-                
-            } catch let err {
-                print(err)
+                case .Failure(let error):
+                    print(error)
             }
-            
-            }.resume()
-        
+        }
     }
- 
 }

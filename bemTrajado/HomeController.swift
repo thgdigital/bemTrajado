@@ -36,9 +36,6 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
             self.collectionView?.reloadData()
         }
         
-       
-        
-        
         
         collectionView?.registerClass(ProdutoHomeCell.self, forCellWithReuseIdentifier: cellId)
         
@@ -84,7 +81,9 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return 0
     }
     
-
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
 
 }
 

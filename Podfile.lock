@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (3.4.1)
+  - DZNEmptyDataSet (1.8.1)
+  - Kingfisher (2.4.2)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - DZNEmptyDataSet
+  - Kingfisher (~> 2.4)
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Kingfisher: 05bf8d04408aaa70fcd2c8c81b9f1d0f1ad313dd
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+PODFILE CHECKSUM: ad67e7161f89a82b3ad61d2f9beb791c44f6480e
+
+COCOAPODS: 1.0.1

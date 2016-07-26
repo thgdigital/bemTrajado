@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class ProdutoHomeMinCell: BaseCell {
     
@@ -24,8 +24,8 @@ class ProdutoHomeMinCell: BaseCell {
             if let image = produtos?.image {
                 
                 let url = "http://thiago.conquist.com.br/upload/"
-                
-                imageView.loadImageUsingUrlString(url+image)
+
+                imageView.kf_setImageWithURL(NSURL(string: url+image))
                
             }
         }

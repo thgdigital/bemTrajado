@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
+   let cdManager = CoreDataManager.sharedInstance
+
+    
+    var singleController : SingleProdutoController?
     
     
     var produto: Produtos? {
@@ -21,6 +27,8 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
                 text.text = descricao
             }
             
+            
+          collectionView.reloadData()
         }
         
     }
@@ -73,12 +81,19 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let count = produto?.galeria?.count{
+            return count
+        }
+        return 0
         
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+        let cell =  collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! GalerialCell
+        cell.galeria = produto?.galeria?[indexPath.item]
+        cell.singleController = singleController
+       
+        return cell
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(200, 100)
@@ -86,6 +101,10 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 14, 0, 14)
         
+    }
+    func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     override func setupViews() {
         super.setupViews()
@@ -95,6 +114,8 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         addSubview(buyBotao)
         addSubview(text)
         addSubview(namePreco)
+     
+        
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -113,7 +134,29 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         
         
         collectionView.registerClass(GalerialCell.self, forCellWithReuseIdentifier: cellId)
+        
+        buyBotao.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pedido)))
+    }
+    func pedido(){
+        let newPedido = cdManager.new("Produto") as! Produto
+        if let id = produto?.id, image = produto?.image, marca_id = produto?.marca_id , titulo = produto?.titulo, created_at = produto?.created_at, updated_at = produto?.updated_at, qtd = produto?.qtd, preco = produto?.preco, descricao = produto?.descricao{
+            
+            newPedido.id            = id
+            newPedido.image         = image
+            newPedido.marca_id      = marca_id
+            newPedido.titulo        = titulo
+            newPedido.created_at    = created_at
+            newPedido.updated_at    = updated_at
+            newPedido.qtd           = qtd
+            newPedido.preco         = preco
+            newPedido.name          = titulo
+            newPedido.descricao     = descricao
+            cdManager.saveObj(newPedido)
+        }
+        
+        
     }
 }
+
 
 

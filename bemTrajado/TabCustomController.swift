@@ -19,7 +19,10 @@ class TabCustomController: UITabBarController {
         homeControler.navigationItem.title = "teste"
         homeControler.tabBarItem.image = UIImage(named: "ic_home")
         
-        let carrinho = UINavigationController(rootViewController: UIViewController())
+        
+        let listaControle = ListaDesejosController(collectionViewLayout: UICollectionViewLayout())
+        
+        let carrinho = UINavigationController(rootViewController: listaControle)
         carrinho.tabBarItem.image = UIImage(named: "ic_local_grocery_store")
         carrinho.tabBarItem.title = "Listar de desejos"
         
@@ -33,6 +36,7 @@ class TabCustomController: UITabBarController {
         let config = UINavigationController(rootViewController: UIViewController())
         config.tabBarItem.image = UIImage(named: "ic_view_headline")
         config.tabBarItem.title = "Minha Conta"
+        config.navigationItem.title = "Configurações"
         
         viewControllers = [navigaitorHome, carrinho, navegacaoLocalicao, config]
         tabBar.translucent = false

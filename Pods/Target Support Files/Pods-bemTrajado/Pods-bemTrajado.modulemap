@@ -1,0 +1,6 @@
+framework module Pods_bemTrajado {
+  umbrella header "Pods-bemTrajado-umbrella.h"
+
+  export *
+  module * { export * }
+}
