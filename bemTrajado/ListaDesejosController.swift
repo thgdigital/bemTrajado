@@ -10,6 +10,8 @@ import UIKit
 
 class ListaDesejosController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))

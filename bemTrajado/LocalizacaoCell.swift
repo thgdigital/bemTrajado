@@ -37,7 +37,7 @@ class LocalizacaoCell: BaseCell {
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapkit.setRegion(coordinateRegion, animated: true)
         
-        var point = MKPointAnnotation();
+        let point = MKPointAnnotation();
         point.coordinate = CLLocationCoordinate2DMake(-22.933078, -43.257244)
         point.title = "Bem Trajados Multimarcas"
         point.subtitle = "RUA ANDARAÍ , 314/ANDARAÍ"
