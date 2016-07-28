@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,8 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        return GIDSignIn.sharedInstance().handleURL(url,
+                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+        
+    }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        print(url)
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     

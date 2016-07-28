@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import Google
 
-class LoginController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginController: UIViewController {
     
     let contatinerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        //view.backgroundColor = UIColor.whiteColor()
+        
         view.layer.cornerRadius = 10
         return view
     }()
-    
     let logoImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "logo")
@@ -35,27 +35,16 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         return button
     }()
     
-    let googleButton: UIButton = {
-        let button = UIButton(type: .System)
+    let googleButton: GIDSignInButton = {
+        let button = GIDSignInButton()
         button.backgroundColor = UIColor.rgb(211, green:  72, blue:  54)
-        
-        button.setTitle("Login com Google", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         button.layer.cornerRadius = 3
+        
         return button
     }()
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        fecthProfile()
-    }
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
-    }
-    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
-     return true
-    }
-    func fecthProfile(){
+    
+    func fecthProfile(user: User){
         print("dados do perfil")
     }
     
@@ -69,10 +58,23 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         contatinerView.addSubview(googleButton)
         
         if let token = FBSDKAccessToken.currentAccessToken() {
-            fecthProfile()
+            print(token)
+            //fecthProfile()
         }
         
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
         
+        if configureError != nil {
+            print(configureError)
+        }
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().language = "pt-PT"
+        
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            //googleButton.hidden = true
+        }
         //x,y,w,h
         contatinerView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         contatinerView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
@@ -101,4 +103,38 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+}
+extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate{
+    
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        if error != nil{
+            print(error)
+            return
+        }
+        print(user.profile.email)
+        print(user.profile.imageURLWithDimension(400))
+        print(user.profile.familyName)
+        print(user.profile.givenName)
+        print(user.profile.name)
+        
+    }
+    func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
+       // self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if error != nil{
+            print(error)
+            return
+        }
+        print(result)
+        //fecthProfile()
+    }
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        
+    }
+    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+    
 }
