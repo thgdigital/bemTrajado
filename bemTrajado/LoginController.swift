@@ -46,8 +46,14 @@ class LoginController: UIViewController {
     }()
     
     func fecthProfile(user: User){
-        
-        print(user)
+     User.cadUser(user) { (User) in
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(User), forKey: "user")
+       
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = TabCustomController()
+
+        }
      
         
     }
@@ -160,7 +166,7 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
         
     }
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
-        print(loginButton)
+        
         return true
     }
     

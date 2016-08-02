@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         
-        
+        window?.rootViewController = LoginController()
         
         if let _ = FBSDKAccessToken.currentAccessToken() {
             homeWimdows()
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
 
         if(url.scheme.isEqual("fb623932531109297")) {
-            print("fui chamado")
+        
             
             return FBSDKApplicationDelegate.sharedInstance().application(
                 application,
