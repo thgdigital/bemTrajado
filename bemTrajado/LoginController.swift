@@ -29,8 +29,9 @@ class LoginController: UIViewController {
     }()
     let facebookButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
-        button.readPermissions = ["email"]
+        button.readPermissions = ["public_profile", "email","user_friends",]
         button.translatesAutoresizingMaskIntoConstraints = false
+
         
         return button
     }()
@@ -45,7 +46,10 @@ class LoginController: UIViewController {
     }()
     
     func fecthProfile(user: User){
-        print("dados do perfil")
+        
+        print(user)
+     
+        
     }
     
     override func viewDidLoad() {
@@ -56,11 +60,7 @@ class LoginController: UIViewController {
         view.addSubview(logoImageView)
         contatinerView.addSubview(facebookButton)
         contatinerView.addSubview(googleButton)
-        
-        if let token = FBSDKAccessToken.currentAccessToken() {
-            print(token)
-            //fecthProfile()
-        }
+       
         
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -112,11 +112,13 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
             print(error)
             return
         }
-        print(user.profile.email)
-        print(user.profile.imageURLWithDimension(400))
-        print(user.profile.familyName)
-        print(user.profile.givenName)
-        print(user.profile.name)
+        
+        let users = User()
+        users.email = user.profile.email
+        users.name = user.profile.familyName
+        users.avatar = user.profile.imageURLWithDimension(400).absoluteString
+        fecthProfile(users)
+        
         
     }
     func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
@@ -127,13 +129,38 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
             print(error)
             return
         }
-        print(result)
-        //fecthProfile()
+        let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler({ (connection, user, requestError) -> Void in
+            
+            if requestError != nil {
+                print(requestError)
+                return
+            }
+            
+            let email = user["email"] as? String
+            let firstName = user["first_name"] as? String
+            let lastName = user["last_name"] as? String
+            
+            
+            let users = User()
+            users.email = email
+            users.name = "\(firstName!) \(lastName!)"
+            
+            var pictureUrl = ""
+            
+            if let picture = user["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
+                pictureUrl = url
+            }
+            users.avatar = pictureUrl
+            
+            self.fecthProfile(users)
+        })
     }
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         
     }
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        print(loginButton)
         return true
     }
     

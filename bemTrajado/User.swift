@@ -14,6 +14,7 @@ class User: NSObject {
     var id: NSNumber?
     var name: String?
     var email: String?
+    var avatar:String?
     
     
     static func cadUser(user: User, completionHandler: (User) -> ()){

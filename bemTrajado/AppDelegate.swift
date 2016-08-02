@@ -15,20 +15,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    func homeWimdows(){
+        window?.rootViewController = TabCustomController()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        print(application)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         
         
-//        let layout = UICollectionViewFlowLayout()
-//        let homeControler = HomeController(collectionViewLayout: layout)
-      
-        window?.rootViewController = LoginController()
-//        window?.rootViewController = TabCustomController()
+        
+        if let _ = FBSDKAccessToken.currentAccessToken() {
+            homeWimdows()
+        }else if  GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            homeWimdows()
+        }else{
+            window?.rootViewController = LoginController()
+
+        }
+        
         
         UINavigationBar.appearance().barTintColor = UIColor.rgb(230, green: 32, blue: 31)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -47,16 +56,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        return GIDSignIn.sharedInstance().handleURL(url,
-                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
-                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-        
-    }
+//    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+//        return GIDSignIn.sharedInstance().handleURL(url,
+//                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+//                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+//        
+//    }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        print(url)
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+
+        if(url.scheme.isEqual("fb623932531109297")) {
+            print("fui chamado")
+            
+            return FBSDKApplicationDelegate.sharedInstance().application(
+                application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
+            
+        } else {
+            return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+            
+        }
     }
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
