@@ -111,7 +111,7 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         
         addSubview(collectionView)
         addSubview(nameLabel)
-        addSubview(buyBotao)
+        //addSubview(buyBotao)
         addSubview(text)
         addSubview(namePreco)
      
@@ -125,10 +125,11 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         addConstraintsWithFormat("H:|-14-[v0]-14-|", views: nameLabel)
         addConstraintsWithFormat("H:|-14-[v0]-14-|", views: namePreco)
         
-        addConstraintsWithFormat("H:|-14-[v0]-14-|", views: buyBotao)
+      //  addConstraintsWithFormat("H:|-14-[v0]-14-|", views: buyBotao)
         addConstraintsWithFormat("H:|-14-[v0]|", views: text)
         
-        addConstraintsWithFormat("V:[v0]-5-[v1]-5-[v2]-5-[v3(50)]-80-|", views:  nameLabel, namePreco, text, buyBotao)
+        //addConstraintsWithFormat("V:[v0]-5-[v1]-5-[v2]-5-[v3(50)]-80-|", views:  nameLabel, namePreco, text, buyBotao)
+        addConstraintsWithFormat("V:[v0]-5-[v1]-5-[v2]-80-|", views:  nameLabel, namePreco, text)
         
         addConstraintsWithFormat("V:|-5-[v0(200)]", views:  collectionView)
         

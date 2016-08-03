@@ -40,6 +40,8 @@
 		C24E4AC71D490E7600FF9EE2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24E4AC61D490E7600FF9EE2 /* Bolts.framework */; };
 		C24E4AC91D4A473500FF9EE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E4AC81D4A473500FF9EE2 /* User.swift */; };
 		C24E4ACB1D4A4E8300FF9EE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C24E4ACA1D4A4E8300FF9EE2 /* GoogleService-Info.plist */; };
+		C2886BD41D52368600825B66 /* TesteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2886BD31D52368600825B66 /* TesteController.swift */; };
+		C2886BD61D52782800825B66 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2886BD51D52782800825B66 /* ConfigController.swift */; };
 		C29BF4C61D46C30C00A0821D /* Galeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BF4C51D46C30C00A0821D /* Galeria.swift */; };
 		D557061C4916441C7A0CBB90 /* Pods_bemTrajado.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C35A2698FB8A536F543F40 /* Pods_bemTrajado.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,8 @@
 		C24E4AC61D490E7600FF9EE2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C24E4AC81D4A473500FF9EE2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C24E4ACA1D4A4E8300FF9EE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C2886BD31D52368600825B66 /* TesteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesteController.swift; sourceTree = "<group>"; };
+		C2886BD51D52782800825B66 /* ConfigController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigController.swift; sourceTree = "<group>"; };
 		C29BF4C51D46C30C00A0821D /* Galeria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Galeria.swift; sourceTree = "<group>"; };
 		ED8F3CD5D23F6CDB888536C6 /* Pods-bemTrajado.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bemTrajado.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bemTrajado/Pods-bemTrajado.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +192,8 @@
 				C24E4AB91D47DB8E00FF9EE2 /* ListaDesejosController.swift */,
 				C24E4ABD1D48F83C00FF9EE2 /* LoginController.swift */,
 				C24E4AC31D490A3600FF9EE2 /* bemTrajado-Bridging-Header.h */,
+				C2886BD31D52368600825B66 /* TesteController.swift */,
+				C2886BD51D52782800825B66 /* ConfigController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -367,7 +373,9 @@
 				846077431D1DEB4500773246 /* BaseCell.swift in Sources */,
 				8460774D1D1E1AFC00773246 /* ProdutoHomeMinCell.swift in Sources */,
 				846077541D1F06AA00773246 /* TabCustomController.swift in Sources */,
+				C2886BD61D52782800825B66 /* ConfigController.swift in Sources */,
 				846077481D1DEDFD00773246 /* Helper.swift in Sources */,
+				C2886BD41D52368600825B66 /* TesteController.swift in Sources */,
 				846077451D1DEB7E00773246 /* ProdutoHomeCell.swift in Sources */,
 				846077301D1DE6BF00773246 /* AppDelegate.swift in Sources */,
 			);

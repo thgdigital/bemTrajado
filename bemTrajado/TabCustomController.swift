@@ -20,7 +20,7 @@ class TabCustomController: UITabBarController {
         homeControler.tabBarItem.image = UIImage(named: "ic_home")
         
         
-        let listaControle = ListaDesejosController(collectionViewLayout: UICollectionViewLayout())
+        let listaControle = ListaDesejosController(collectionViewLayout: UICollectionViewFlowLayout())
         
         let carrinho = UINavigationController(rootViewController: listaControle)
         carrinho.tabBarItem.image = UIImage(named: "ic_local_grocery_store")
@@ -33,12 +33,14 @@ class TabCustomController: UITabBarController {
         navegacaoLocalicao.tabBarItem.title = "Localização"
         
         
-        let config = UINavigationController(rootViewController: UIViewController())
+        let config = UINavigationController(rootViewController: ConfigController())
         config.tabBarItem.image = UIImage(named: "ic_view_headline")
         config.tabBarItem.title = "Minha Conta"
         config.navigationItem.title = "Configurações"
         
         viewControllers = [navigaitorHome, carrinho, navegacaoLocalicao, config]
+        //viewControllers = [navigaitorHome, navegacaoLocalicao, config]
+        
         tabBar.translucent = false
     }
 }
