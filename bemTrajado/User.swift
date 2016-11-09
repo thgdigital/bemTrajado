@@ -17,17 +17,17 @@ class User: NSObject, NSCoding {
     var avatar:String?
     
     
-    static func cadUser(user: User, completionHandler: (User) -> ()){
+    static func cadUser(_ user: User, completionHandler: @escaping (User) -> ()){
     let urlString = "http://thiago.conquist.com.br/api/user/login-rede-social"
       let parameters = ["email": user.email!, "name": user.name!, "avatar": user.avatar!, "password": "bemtrajado"]
-        
-        Alamofire.request(.POST, urlString, parameters: parameters)
+        print(parameters)
+        Alamofire.request(urlString, method: .post, parameters: parameters)
             .validate()
             .responseJSON { response in
                
                 let users = User()
                 switch response.result {
-                case .Success:
+                case .success:
                     
                     if let jsonObject = response.result.value {
                         let json = JSON(jsonObject)
@@ -40,12 +40,15 @@ class User: NSObject, NSCoding {
                     }
                     
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                         
                         completionHandler(users)
                     })
-                case .Failure(let error):
-                    print(error)
+                case .failure(let error):
+                    print("===========================")
+                        print(error)
+                    print("===========================")
                 }
                 
         }
@@ -55,18 +58,18 @@ class User: NSObject, NSCoding {
         super.init()
     }
     required init?(coder decoder: NSCoder) {
-        self.id = decoder.decodeObjectForKey("id") as? NSNumber
-        self.name = decoder.decodeObjectForKey("name") as? String
-        self.email = decoder.decodeObjectForKey("email") as? String
-        self.avatar = decoder.decodeObjectForKey("avatar") as? String
+        self.id = decoder.decodeObject(forKey: "id") as? NSNumber
+        self.name = decoder.decodeObject(forKey: "name") as? String
+        self.email = decoder.decodeObject(forKey: "email") as? String
+        self.avatar = decoder.decodeObject(forKey: "avatar") as? String
         
         super.init()
     }
-    func encodeWithCoder(encoder: NSCoder) {
-        encoder.encodeObject(self.id, forKey: "id")
-        encoder.encodeObject(self.name, forKey: "name")
-        encoder.encodeObject(self.avatar, forKey: "avatar")
-        encoder.encodeObject(self.email, forKey: "email")
+    func encode(with encoder: NSCoder) {
+        encoder.encode(self.id, forKey: "id")
+        encoder.encode(self.name, forKey: "name")
+        encoder.encode(self.avatar, forKey: "avatar")
+        encoder.encode(self.email, forKey: "email")
     }
 
 }

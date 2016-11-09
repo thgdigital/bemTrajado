@@ -11,23 +11,23 @@ import UIKit
 class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     
-    private let cellId = "cellId"
-    private let cellHeaderId = "cellHeaderId"
+    fileprivate let cellId = "cellId"
+    fileprivate let cellHeaderId = "cellHeaderId"
     var categorias :  [Categoria]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.white
         navigationItem.title = "Bem Trajados Multimarcas"
         
     
         
-        let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Bem Trajados Multimarcas"
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.systemFontOfSize(20)
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
         
         Categoria.categoriasProdutos { (categoria) in
@@ -37,51 +37,51 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         }
         
         
-        collectionView?.registerClass(ProdutoHomeCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ProdutoHomeCell.self, forCellWithReuseIdentifier: cellId)
         
-        collectionView?.registerClass(HomeHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: cellHeaderId)
-        
+        collectionView?.register(HomeHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: cellHeaderId)
+         collectionView?.alwaysBounceVertical = true;
     }
     
-    func showAppDetailForApp(produto: Produtos) {
+    func showAppDetailForApp(_ produto: Produtos) {
         let layout = UICollectionViewFlowLayout()
         let singleProdutoController = SingleProdutoController(collectionViewLayout: layout)
         singleProdutoController.produto = produto
         navigationController?.pushViewController(singleProdutoController, animated: true)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-         return CGSizeMake(view.frame.width, 200)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+         return CGSize(width: view.frame.width, height: 200)
     }
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: cellHeaderId, forIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: cellHeaderId, for: indexPath)
     }
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let cout = categorias?.count {
             return cout
         }
         return 0
     }
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProdutoHomeCell
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProdutoHomeCell
         
-        cell.categoria = categorias?[indexPath.item]
+        cell.categoria = categorias?[(indexPath as NSIndexPath).item]
         cell.homeController = self
         return cell
         
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 240)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 240)
     }
 
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }
 

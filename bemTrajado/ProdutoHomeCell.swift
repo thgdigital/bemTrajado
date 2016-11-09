@@ -13,7 +13,7 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
     
   
     
-    private let cellId = "cellId"
+    fileprivate let cellId = "cellId"
     
     var homeController : HomeController?
     
@@ -35,10 +35,10 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
     
     let collectionView : UICollectionView = {
         let layout  = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
+        layout.scrollDirection = .horizontal
         let colletion  = UICollectionView(frame: .zero, collectionViewLayout: layout)
         colletion.translatesAutoresizingMaskIntoConstraints = false
-        colletion.backgroundColor = UIColor.whiteColor()
+        colletion.backgroundColor = UIColor.white
         
         return colletion
     }()
@@ -46,7 +46,7 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         
         let categoria = UILabel()
         categoria.text = "Nome categoria"
-        categoria.font = UIFont.systemFontOfSize(15)
+        categoria.font = UIFont.systemFont(ofSize: 15)
         
         return categoria
     }()
@@ -57,14 +57,14 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         
         return view
     }()
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProdutoHomeMinCell
-        cell.produtos = categoria?.produtos?[indexPath.item]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProdutoHomeMinCell
+        cell.produtos = categoria?.produtos?[(indexPath as NSIndexPath).item]
         
         
         return cell
     }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let count = categoria?.produtos?.count {
             
@@ -76,15 +76,15 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
        
     }
    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(200, frame.height - 25)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: frame.height - 25)
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 14, 0, 14)
         
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let app = categoria?.produtos?[indexPath.item]{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let app = categoria?.produtos?[(indexPath as NSIndexPath).item]{
             
             if let id = app.id {
                 var produto = Produtos()
@@ -110,7 +110,7 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         collectionView.delegate = self
         
         
-        collectionView.registerClass(ProdutoHomeMinCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(ProdutoHomeMinCell.self, forCellWithReuseIdentifier: cellId)
 
         
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)

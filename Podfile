@@ -3,10 +3,14 @@
 
 target 'bemTrajado' do
 pod 'DZNEmptyDataSet'
-pod 'Kingfisher', '~> 2.4'
+pod 'Kingfisher'
 pod 'SwiftyJSON'
-pod 'Alamofire', '~> 3.4'
+pod 'Alamofire'
 pod 'Google/SignIn'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
+pod 'SlideMenuControllerSwift'
 
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!

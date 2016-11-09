@@ -7,14 +7,34 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class ListaDesejosController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    private let cellId = "cellId"
+    fileprivate let cellId = "cellId"
      let cdManager = CoreDataManager.sharedInstance
     var produts : [Produtos]?
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
          produts =  buscarDados()
         collectionView?.dataSource = self
@@ -22,42 +42,42 @@ class ListaDesejosController: UICollectionViewController, UICollectionViewDelega
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))
-        titleLabel.text = "Lista de desejos"
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.systemFontOfSize(20)
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = " Lista de desejos"
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        collectionView?.backgroundColor = UIColor.whiteColor()
-        collectionView?.registerClass(ListaCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.backgroundColor = UIColor.white
+        collectionView?.register(ListaCell.self, forCellWithReuseIdentifier: cellId)
         //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(deleteC))
-       navigationItem.rightBarButtonItem = editButtonItem()
+//       navigationItem.rightBarButtonItem = editButtonItem
         if let indexPath = getIndexPathForSelectedCell() {
             highlightCell(indexPath, flag: false)
         }
         
        // toolBar.hidden = true
     }
-    func deleteCells(sender: AnyObject) {
-        
-       // var deletedFruits:[Fruit] = []
-        
-        let indexpaths = collectionView?.indexPathsForSelectedItems()
-       
-        if let indexpaths = indexpaths {
-            
-            for item  in indexpaths {
-                collectionView?.deselectItemAtIndexPath((item), animated: true)
-                // fruits for section
-                //let sectionfruits = dataSource.fruitsInGroup(item.section)
-                deletedFruits.append(sectionfruits[item.row])
-            }
-            
-           // dataSource.deleteItems(deletedFruits)
-            
-            collectionView?.deleteItemsAtIndexPaths(indexpaths)
-        }
-    }
-}
+//    func deleteCells(sender: AnyObject) {
+//        
+//       // var deletedFruits:[Fruit] = []
+//        
+//        let indexpaths = collectionView?.indexPathsForSelectedItems()
+//       
+//        if let indexpaths = indexpaths {
+//            
+//            for item  in indexpaths {
+//                collectionView?.deselectItemAtIndexPath((item), animated: true)
+//                // fruits for section
+//                //let sectionfruits = dataSource.fruitsInGroup(item.section)
+//                deletedFruits.append(sectionfruits[item.row])
+//            }
+//            
+//           // dataSource.deleteItems(deletedFruits)
+//            
+//            collectionView?.deleteItemsAtIndexPaths(indexpaths)
+//        }
+//    }
+//
 
     
      func buscarDados() -> [Produtos] {
@@ -94,73 +114,73 @@ class ListaDesejosController: UICollectionViewController, UICollectionViewDelega
         
     }
     
-    func getIndexPathForSelectedCell() -> NSIndexPath? {
+    func getIndexPathForSelectedCell() -> IndexPath? {
         
-        var indexPath:NSIndexPath?
+        var indexPath:IndexPath?
         
-        if collectionView?.indexPathsForSelectedItems()!.count > 0 {
-            indexPath = collectionView?.indexPathsForSelectedItems()![0]
+        if collectionView?.indexPathsForSelectedItems!.count > 0 {
+            indexPath = collectionView?.indexPathsForSelectedItems![0]
         }
         return indexPath
     }
     
-    func highlightCell(indexPath : NSIndexPath, flag: Bool) {
+    func highlightCell(_ indexPath : IndexPath, flag: Bool) {
         
-        let cell = collectionView?.cellForItemAtIndexPath(indexPath)
+        let cell = collectionView?.cellForItem(at: indexPath)
         
         if flag {
-            cell?.contentView.backgroundColor = UIColor.magentaColor()
+            cell?.contentView.backgroundColor = UIColor.magenta
         } else {
             cell?.contentView.backgroundColor = nil
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         highlightCell(indexPath, flag: true)
         
     }
     
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         highlightCell(indexPath, flag: false)
         
     }
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView?.allowsMultipleSelection = editing
         //toolBar.hidden = !editing
     }
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = produts?.count{
             return count
         }
         return 0
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 200)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 125)
     }
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ListaCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListaCell
         
-        cell.produto = produts?[indexPath.item]
-        cell.left = view.leftAnchor
-        cell.centerV = view.centerXAnchor
+        cell.produto = produts?[(indexPath as NSIndexPath).item]
+//        cell.left = view.leftAnchor
+//        cell.centerV = view.centerXAnchor
         return cell
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
     }
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsetsMake(0, 14, 0, 14)
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsetsMake(5, 0,5, 0)
 //        
 //    }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }
 }
 //extension ListaDesejosController  : UICollectionViewDataSource {
 //    
-//    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+//     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 //        
 //        if let count = produts?.count{
 //            return count

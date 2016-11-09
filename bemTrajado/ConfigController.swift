@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
-class ConfigController: UIViewController {
+class ConfigController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var login = FBSDKLoginManager()
     
 
@@ -17,20 +18,21 @@ class ConfigController: UIViewController {
         
         super.viewDidLoad()
         navigationItem.title = "CONFIGURAÇÕES"
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
       
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Sair", style: .Plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Sair", style: .plain, target: self, action: #selector(addTapped))
         // Do any additional setup after loading the view.
+      
     }
     func addTapped(){
         login.logOut()
         GIDSignIn.sharedInstance().signOut()
-        if let _ = FBSDKAccessToken.currentAccessToken() {
+        if let _ = FBSDKAccessToken.current() {
            
         }else if  GIDSignIn.sharedInstance().hasAuthInKeychain() {
             
         }else{
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = LoginController()
             
         }
@@ -40,7 +42,14 @@ class ConfigController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+   
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
 
 }

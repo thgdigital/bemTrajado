@@ -8,6 +8,7 @@
 
 import UIKit
 import Google
+import FBSDKLoginKit
 
 class LoginController: UIViewController {
     
@@ -23,7 +24,7 @@ class LoginController: UIViewController {
         iv.image = UIImage(named: "logo")
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 10
-        iv.contentMode = .ScaleAspectFill
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
     }()
@@ -45,12 +46,12 @@ class LoginController: UIViewController {
         return button
     }()
     
-    func fecthProfile(user: User){
+    func fecthProfile(_ user: User){
      User.cadUser(user) { (User) in
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(User), forKey: "user")
+        let defaults = UserDefaults.standard
+        defaults.set(NSKeyedArchiver.archivedData(withRootObject: User), forKey: "user")
        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = TabCustomController()
 
         }
@@ -82,38 +83,42 @@ class LoginController: UIViewController {
             //googleButton.hidden = true
         }
         //x,y,w,h
-        contatinerView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        contatinerView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        contatinerView.widthAnchor.constraintEqualToAnchor(view.widthAnchor, constant: -24).active = true
-        contatinerView.heightAnchor.constraintEqualToConstant(150).active = true
+        contatinerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        contatinerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        contatinerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        contatinerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         //x,y,w,h
-        facebookButton.topAnchor.constraintEqualToAnchor(contatinerView.topAnchor).active = true
-        facebookButton.leftAnchor.constraintEqualToAnchor(contatinerView.leftAnchor).active = true
-        facebookButton.widthAnchor.constraintEqualToAnchor(contatinerView.widthAnchor).active = true
-        facebookButton.heightAnchor.constraintEqualToConstant(50).active = true
+        facebookButton.topAnchor.constraint(equalTo: contatinerView.topAnchor).isActive = true
+        facebookButton.leftAnchor.constraint(equalTo: contatinerView.leftAnchor).isActive = true
+        facebookButton.widthAnchor.constraint(equalTo: contatinerView.widthAnchor).isActive = true
+        facebookButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         //x,y,w,h
-        googleButton.topAnchor.constraintEqualToAnchor(facebookButton.bottomAnchor, constant: 5).active = true
-        googleButton.leftAnchor.constraintEqualToAnchor(contatinerView.leftAnchor).active = true
-        googleButton.widthAnchor.constraintEqualToAnchor(contatinerView.widthAnchor).active = true
-        googleButton.heightAnchor.constraintEqualToConstant(50).active = true
+        googleButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 5).isActive = true
+        googleButton.leftAnchor.constraint(equalTo: contatinerView.leftAnchor).isActive = true
+        googleButton.widthAnchor.constraint(equalTo: contatinerView.widthAnchor).isActive = true
+        googleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         //x,y,w,h
-        logoImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        logoImageView.bottomAnchor.constraintEqualToAnchor(contatinerView.topAnchor, constant: -12).active = true
-        logoImageView.widthAnchor.constraintEqualToConstant(150).active = true
-        logoImageView.heightAnchor.constraintEqualToConstant(150).active = true
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: contatinerView.topAnchor, constant: -12).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
     }
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate{
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+
     
     
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: NSError!) {
         if error != nil{
             print(error)
             return
@@ -122,30 +127,30 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
         let users = User()
         users.email = user.profile.email
         users.name = user.profile.familyName
-        users.avatar = user.profile.imageURLWithDimension(400).absoluteString
+        users.avatar = user.profile.imageURL(withDimension: 400).absoluteString
         fecthProfile(users)
         
         
     }
-    func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
        // self.dismissViewControllerAnimated(true, completion: nil)
     }
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil{
             print(error)
             return
         }
         let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
-        FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler({ (connection, user, requestError) -> Void in
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, user, requestError) -> Void in
             
             if requestError != nil {
-                print(requestError)
+                //print(requestError)
                 return
             }
-            
-            let email = user["email"] as? String
-            let firstName = user["first_name"] as? String
-            let lastName = user["last_name"] as? String
+            if let dataDict = user as? [String:AnyObject] {
+            let email = dataDict["email"] as? String
+            let firstName = dataDict["first_name"] as? String
+            let lastName = dataDict["last_name"] as? String
             
             
             let users = User()
@@ -154,18 +159,21 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
             
             var pictureUrl = ""
             
-            if let picture = user["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
+            if let picture = dataDict["picture"] as? NSDictionary, let data = picture["data"] as? NSDictionary, let url = data["url"] as? String {
                 pictureUrl = url
             }
             users.avatar = pictureUrl
             
             self.fecthProfile(users)
+               
+              
+            }
         })
     }
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
     }
-    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
         
         return true
     }

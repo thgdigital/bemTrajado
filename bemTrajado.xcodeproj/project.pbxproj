@@ -26,6 +26,10 @@
 		846077541D1F06AA00773246 /* TabCustomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846077531D1F06AA00773246 /* TabCustomController.swift */; };
 		846077561D1F1AB600773246 /* LocalizacaoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846077551D1F1AB600773246 /* LocalizacaoController.swift */; };
 		846077581D1F1FD000773246 /* LocalizacaoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846077571D1F1FD000773246 /* LocalizacaoCell.swift */; };
+		AFA8CF641D9D8C8100920E53 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8CF631D9D8C8100920E53 /* ImageHelper.swift */; };
+		AFCFB0E31DD2397D0012AC0C /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFB0E21DD2397D0012AC0C /* ChatController.swift */; };
+		AFCFB0E51DD363520012AC0C /* DesejoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFB0E41DD363520012AC0C /* DesejoController.swift */; };
+		AFCFB0E71DD36A050012AC0C /* DesejoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFB0E61DD36A050012AC0C /* DesejoCell.swift */; };
 		C24E4AA71D47B18900FF9EE2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C24E4AA51D47B18900FF9EE2 /* Model.xcdatamodeld */; };
 		C24E4AA91D47B1E800FF9EE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24E4AA81D47B1E800FF9EE2 /* CoreData.framework */; };
 		C24E4AB11D47B76D00FF9EE2 /* Produto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E4AAF1D47B76D00FF9EE2 /* Produto+CoreDataProperties.swift */; };
@@ -35,9 +39,6 @@
 		C24E4ABA1D47DB8E00FF9EE2 /* ListaDesejosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E4AB91D47DB8E00FF9EE2 /* ListaDesejosController.swift */; };
 		C24E4ABC1D47DDD100FF9EE2 /* ListaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E4ABB1D47DDD100FF9EE2 /* ListaCell.swift */; };
 		C24E4ABE1D48F83C00FF9EE2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E4ABD1D48F83C00FF9EE2 /* LoginController.swift */; };
-		C24E4AC11D49074900FF9EE2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24E4ABF1D49074900FF9EE2 /* FBSDKCoreKit.framework */; };
-		C24E4AC21D49074900FF9EE2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24E4AC01D49074900FF9EE2 /* FBSDKLoginKit.framework */; };
-		C24E4AC71D490E7600FF9EE2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24E4AC61D490E7600FF9EE2 /* Bolts.framework */; };
 		C24E4AC91D4A473500FF9EE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E4AC81D4A473500FF9EE2 /* User.swift */; };
 		C24E4ACB1D4A4E8300FF9EE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C24E4ACA1D4A4E8300FF9EE2 /* GoogleService-Info.plist */; };
 		C2886BD41D52368600825B66 /* TesteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2886BD31D52368600825B66 /* TesteController.swift */; };
@@ -70,6 +71,11 @@
 		846077531D1F06AA00773246 /* TabCustomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabCustomController.swift; sourceTree = "<group>"; };
 		846077551D1F1AB600773246 /* LocalizacaoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizacaoController.swift; sourceTree = "<group>"; };
 		846077571D1F1FD000773246 /* LocalizacaoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizacaoCell.swift; sourceTree = "<group>"; };
+		AF69E3EE1DC1511A00AB6320 /* bemTrajado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bemTrajado.entitlements; sourceTree = "<group>"; };
+		AFA8CF631D9D8C8100920E53 /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		AFCFB0E21DD2397D0012AC0C /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		AFCFB0E41DD363520012AC0C /* DesejoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesejoController.swift; sourceTree = "<group>"; };
+		AFCFB0E61DD36A050012AC0C /* DesejoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesejoCell.swift; sourceTree = "<group>"; };
 		C24E4AA61D47B18900FF9EE2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C24E4AA81D47B1E800FF9EE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C24E4AAF1D47B76D00FF9EE2 /* Produto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Produto+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -79,10 +85,7 @@
 		C24E4AB91D47DB8E00FF9EE2 /* ListaDesejosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaDesejosController.swift; sourceTree = "<group>"; };
 		C24E4ABB1D47DDD100FF9EE2 /* ListaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaCell.swift; sourceTree = "<group>"; };
 		C24E4ABD1D48F83C00FF9EE2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		C24E4ABF1D49074900FF9EE2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		C24E4AC01D49074900FF9EE2 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C24E4AC31D490A3600FF9EE2 /* bemTrajado-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bemTrajado-Bridging-Header.h"; sourceTree = "<group>"; };
-		C24E4AC61D490E7600FF9EE2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C24E4AC81D4A473500FF9EE2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C24E4ACA1D4A4E8300FF9EE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C2886BD31D52368600825B66 /* TesteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesteController.swift; sourceTree = "<group>"; };
@@ -97,9 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24E4AB81D47D7F900FF9EE2 /* CoreLocation.framework in Frameworks */,
-				C24E4AC11D49074900FF9EE2 /* FBSDKCoreKit.framework in Frameworks */,
-				C24E4AC21D49074900FF9EE2 /* FBSDKLoginKit.framework in Frameworks */,
-				C24E4AC71D490E7600FF9EE2 /* Bolts.framework in Frameworks */,
 				C24E4AA91D47B1E800FF9EE2 /* CoreData.framework in Frameworks */,
 				D557061C4916441C7A0CBB90 /* Pods_bemTrajado.framework in Frameworks */,
 			);
@@ -121,9 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				C24E4ACA1D4A4E8300FF9EE2 /* GoogleService-Info.plist */,
-				C24E4AC61D490E7600FF9EE2 /* Bolts.framework */,
-				C24E4ABF1D49074900FF9EE2 /* FBSDKCoreKit.framework */,
-				C24E4AC01D49074900FF9EE2 /* FBSDKLoginKit.framework */,
 				C24E4AB51D47B9DB00FF9EE2 /* CoreDataManager.swift */,
 				C24E4AA51D47B18900FF9EE2 /* Model.xcdatamodeld */,
 				8460772E1D1DE6BF00773246 /* bemTrajado */,
@@ -144,6 +141,7 @@
 		8460772E1D1DE6BF00773246 /* bemTrajado */ = {
 			isa = PBXGroup;
 			children = (
+				AF69E3EE1DC1511A00AB6320 /* bemTrajado.entitlements */,
 				C24E4AAA1D47B72D00FF9EE2 /* Entidades */,
 				8460774E1D1EEE8B00773246 /* Model */,
 				8460774B1D1E116400773246 /* Controller */,
@@ -170,6 +168,7 @@
 				8433EA6A1D286EDB000D78CA /* SingleCell.swift */,
 				8433EA6C1D2884C8000D78CA /* GaleriaCell.swift */,
 				C24E4ABB1D47DDD100FF9EE2 /* ListaCell.swift */,
+				AFCFB0E61DD36A050012AC0C /* DesejoCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -177,6 +176,7 @@
 		846077461D1DED9D00773246 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				AFA8CF631D9D8C8100920E53 /* ImageHelper.swift */,
 				846077471D1DEDFD00773246 /* Helper.swift */,
 			);
 			name = Helper;
@@ -194,6 +194,8 @@
 				C24E4AC31D490A3600FF9EE2 /* bemTrajado-Bridging-Header.h */,
 				C2886BD31D52368600825B66 /* TesteController.swift */,
 				C2886BD51D52782800825B66 /* ConfigController.swift */,
+				AFCFB0E21DD2397D0012AC0C /* ChatController.swift */,
+				AFCFB0E41DD363520012AC0C /* DesejoController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,11 +260,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "THG Digital";
 				TargetAttributes = {
 					8460772B1D1DE6BF00773246 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Y435X6EYVB;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -326,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C5CA23F3CBAC955AFB6BBA8F /* [CP] Embed Pods Frameworks */ = {
@@ -356,13 +365,16 @@
 				8433EA671D285CA7000D78CA /* SingleProdutoController.swift in Sources */,
 				C24E4AC91D4A473500FF9EE2 /* User.swift in Sources */,
 				846077561D1F1AB600773246 /* LocalizacaoController.swift in Sources */,
+				AFCFB0E51DD363520012AC0C /* DesejoController.swift in Sources */,
 				846077321D1DE6BF00773246 /* HomeController.swift in Sources */,
 				C24E4AA71D47B18900FF9EE2 /* Model.xcdatamodeld in Sources */,
 				846077581D1F1FD000773246 /* LocalizacaoCell.swift in Sources */,
 				846077521D1EF08800773246 /* Produtos.swift in Sources */,
 				C29BF4C61D46C30C00A0821D /* Galeria.swift in Sources */,
 				8433EA6B1D286EDB000D78CA /* SingleCell.swift in Sources */,
+				AFCFB0E71DD36A050012AC0C /* DesejoCell.swift in Sources */,
 				C24E4ABC1D47DDD100FF9EE2 /* ListaCell.swift in Sources */,
+				AFCFB0E31DD2397D0012AC0C /* ChatController.swift in Sources */,
 				C24E4AB11D47B76D00FF9EE2 /* Produto+CoreDataProperties.swift in Sources */,
 				C24E4ABA1D47DB8E00FF9EE2 /* ListaDesejosController.swift in Sources */,
 				C24E4ABE1D48F83C00FF9EE2 /* LoginController.swift in Sources */,
@@ -378,6 +390,7 @@
 				C2886BD41D52368600825B66 /* TesteController.swift in Sources */,
 				846077451D1DEB7E00773246 /* ProdutoHomeCell.swift in Sources */,
 				846077301D1DE6BF00773246 /* AppDelegate.swift in Sources */,
+				AFA8CF641D9D8C8100920E53 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +430,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -463,8 +478,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -483,6 +500,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -492,9 +510,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED8F3CD5D23F6CDB888536C6 /* Pods-bemTrajado.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = bemTrajado/bemTrajado.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -503,8 +524,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.thgdigital.bemTrajado;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bemTrajado/bemTrajado-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -512,9 +535,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A523689263F7ED590EDB642 /* Pods-bemTrajado.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = bemTrajado/bemTrajado.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -523,7 +549,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.thgdigital.bemTrajado;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bemTrajado/bemTrajado-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

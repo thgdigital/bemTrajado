@@ -24,15 +24,15 @@ class Produtos: NSObject {
     var galeria: [Galeria]?
     
     
-    static func getProduto(id: NSNumber, completionHandler: (Produtos) -> ()) {
+    static func getProduto(_ id: NSNumber, completionHandler: @escaping (Produtos) -> ()) {
         let urlString = "http://thiago.conquist.com.br/api/produtos/\(id)/ver"
-        Alamofire.request(.GET, urlString)
+        Alamofire.request(urlString)
             .validate()
             .responseJSON { response in
                 
                 let produto = Produtos()
                 switch response.result {
-                case .Success:
+                case .success:
                  
                         if let jsonObject = response.result.value {
                             let json = JSON(jsonObject)
@@ -59,11 +59,12 @@ class Produtos: NSObject {
                         }
                     
                    
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                            
                             completionHandler(produto)
                         })
-                case .Failure(let error):
+                case .failure(let error):
                     print(error)
                 }
                 

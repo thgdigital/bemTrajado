@@ -20,11 +20,19 @@ class TabCustomController: UITabBarController {
         homeControler.tabBarItem.image = UIImage(named: "ic_home")
         
         
-        let listaControle = ListaDesejosController(collectionViewLayout: UICollectionViewFlowLayout())
+//        let listaControle = ListaDesejosController(collectionViewLayout: UICollectionViewFlowLayout())
+//        
+//        let carrinho = UINavigationController(rootViewController: listaControle)
+//        carrinho.tabBarItem.image = UIImage(named: "ic_local_grocery_store")
+//        carrinho.tabBarItem.title = "Listar de desejos"
+      //  var carrinho = UINavigationController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let  viewController = storyboard.instantiateViewController(withIdentifier: "DesejoController") as! DesejoController
+           let carrinho = UINavigationController(rootViewController: viewController)
         
-        let carrinho = UINavigationController(rootViewController: listaControle)
         carrinho.tabBarItem.image = UIImage(named: "ic_local_grocery_store")
         carrinho.tabBarItem.title = "Listar de desejos"
+        
         
         
         let localicao = LocalizacaoController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -37,10 +45,22 @@ class TabCustomController: UITabBarController {
         config.tabBarItem.image = UIImage(named: "ic_view_headline")
         config.tabBarItem.title = "Minha Conta"
         config.navigationItem.title = "Configurações"
+        let chat = UINavigationController(rootViewController: ChatController())
+        chat.tabBarItem.image = UIImage(named: "chat")
+        chat.tabBarItem.title = "Chat"
+        chat.navigationItem.title = "Chat"
+        if verifica(){
+        }
         
-        viewControllers = [navigaitorHome, carrinho, navegacaoLocalicao, config]
-        //viewControllers = [navigaitorHome, navegacaoLocalicao, config]
+        viewControllers = [navigaitorHome, carrinho,chat, navegacaoLocalicao, config]
         
-        tabBar.translucent = false
+        tabBar.isTranslucent = false
+    }
+    func verifica() -> Bool{
+        
+        if let  _ = self.storyboard?.instantiateViewController(withIdentifier: "DesejoController") as? DesejoController{
+            return true
+        }
+        return false
     }
 }

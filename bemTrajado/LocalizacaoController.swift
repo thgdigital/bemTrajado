@@ -10,34 +10,35 @@ import UIKit
 
 class LocalizacaoController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let cellId = "cellId"
+    fileprivate let cellId = "cellId"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Localição e Contatos"
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.systemFontOfSize(20)
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        collectionView?.backgroundColor = UIColor.whiteColor()        
-        collectionView?.registerClass(LocalizacaoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.backgroundColor = UIColor.white        
+        collectionView?.register(LocalizacaoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.alwaysBounceVertical = true;
     }
     
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 350)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 350 + 60)
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
     }
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }
 }

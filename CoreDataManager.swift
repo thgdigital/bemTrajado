@@ -16,7 +16,7 @@ class CoreDataManager: NSObject {
     var entityObj: NSManagedObject!   //Recebe o objeto do managedContext
     
     lazy var managedContext: NSManagedObjectContext = {
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var appDelegate = UIApplication.shared.delegate as! AppDelegate
         var c = appDelegate.managedObjectContext
         return c
     }()
@@ -24,11 +24,11 @@ class CoreDataManager: NSObject {
     //MARK: - CRUD -
     
     /// Cria nova entidade no managedContext
-    func new(entityName: String) -> NSManagedObject{
-        return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: managedContext)
+    func new(_ entityName: String) -> NSManagedObject{
+        return NSEntityDescription.insertNewObject(forEntityName: entityName, into: managedContext)
     }
     
-    func saveObj(obj: NSManagedObject) {
+    func saveObj(_ obj: NSManagedObject) {
         do {
             try obj.managedObjectContext?.save()
         } catch let error as NSError {
@@ -37,9 +37,9 @@ class CoreDataManager: NSObject {
     }
     
     /// Delete an object
-    func deleteObj(obj: NSManagedObject) {
+    func deleteObj(_ obj: NSManagedObject) {
 
-        managedContext.deleteObject(obj)
+        managedContext.delete(obj)
         
         do {
             try managedContext.save()
@@ -49,8 +49,8 @@ class CoreDataManager: NSObject {
     }
     
     /// Custom - All searches can use it
-    func customSearch(entityName: String, predicate: NSPredicate, sortDescriptor: NSSortDescriptor) -> [NSManagedObject]? {
-        let fetchRequest = NSFetchRequest(entityName: entityName)
+    func customSearch(_ entityName: String, predicate: NSPredicate, sortDescriptor: NSSortDescriptor) -> [NSManagedObject]? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         
         fetchRequest.sortDescriptors = [sortDescriptor]  // Sort descriptor object that sorts ( ORDER BY )
         fetchRequest.predicate = predicate               // Predicate filters out ( WHERE )
@@ -58,7 +58,7 @@ class CoreDataManager: NSObject {
         var fetchedResults: [NSManagedObject]?
         
         do {
-            try fetchedResults = self.managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            try fetchedResults = self.managedContext.fetch(fetchRequest) as? [NSManagedObject]
         } catch let error as NSError {
             print("Error: \(error)")
         }

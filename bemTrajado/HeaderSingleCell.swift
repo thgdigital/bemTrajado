@@ -29,9 +29,9 @@ class HeaderSingleCell: BaseCell {
     let imageView: CustomImageView = {
         let iv = CustomImageView()
         iv.image = UIImage(named: "banner")
-        iv.contentMode = .ScaleAspectFill
+        iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
-        iv.userInteractionEnabled = true
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     

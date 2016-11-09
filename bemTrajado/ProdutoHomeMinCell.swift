@@ -25,7 +25,7 @@ class ProdutoHomeMinCell: BaseCell {
                 
                 let url = "http://thiago.conquist.com.br/upload/"
 
-                imageView.kf_setImageWithURL(NSURL(string: url+image))
+               // imageView.loadImageWithUrl(url+image, placeholder: UIImage(named: "placeholder"))
                
             }
         }
@@ -48,8 +48,8 @@ class ProdutoHomeMinCell: BaseCell {
     let imageView : CustomImageView = {
         
         let iv = CustomImageView()
-        iv.image = UIImage(named: "blusa")
-        iv.contentMode = .ScaleAspectFill
+        iv.image = UIImage(named: "bemTrajado")
+        iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
         iv.layer.cornerRadius = 5
         return iv
@@ -58,13 +58,13 @@ class ProdutoHomeMinCell: BaseCell {
         let label = UILabel()
         label.text = "Blusa da lacoste"
         label.numberOfLines = 2
-        label.font = UIFont.systemFontOfSize(14)
+        label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     let namePreco: UILabel = {
         let label = UILabel()
         label.text = "R$ 190, 00"
-        label.font = UIFont.boldSystemFontOfSize(12)
+        label.font = UIFont.boldSystemFont(ofSize: 12)
   
         
         return label

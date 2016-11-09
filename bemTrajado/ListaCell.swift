@@ -10,8 +10,8 @@ import UIKit
 import Kingfisher
 
 class ListaCell: BaseCell {
-    var left :NSLayoutAnchor?
-    var centerV :NSLayoutAnchor?
+    var left :NSLayoutAnchor<AnyObject>?
+    var centerV :NSLayoutAnchor<AnyObject>?
     var produto: Produtos? {
         
         didSet {
@@ -22,7 +22,7 @@ class ListaCell: BaseCell {
             if let image = produto?.image{
                 let url = "http://thiago.conquist.com.br/upload/"
                 
-                roupaImageView.kf_setImageWithURL(NSURL(string: url+image))
+                //roupaImageView.kf_setImageWithURL(URL(string: url+image))
             }
             if let descri = produto?.descricao {
                 print(descri)
@@ -38,34 +38,33 @@ class ListaCell: BaseCell {
     }
 
     override func setupViews() {
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
        
         addSubview(nameLabel)
         addSubview(roupaImageView)
         addSubview(dividiView)
         addSubview(text)
         addSubview(namePreco)
-        addConstraintsWithFormat("H:|-20-[v0(140)]", views: roupaImageView)
-        addConstraintsWithFormat("H:|-180-[v0]", views: nameLabel)
-        addConstraintsWithFormat("H:|-180-[v0]-20-|", views: text)
-        addConstraintsWithFormat("H:|-180-[v0]|", views: namePreco)
+        addConstraintsWithFormat("H:|-10-[v0]", views: nameLabel)
+        addConstraintsWithFormat("H:|-10-[v0]-5-[v1(80)]-20-|", views: text,roupaImageView)
+        addConstraintsWithFormat("H:|-10-[v0]|", views: namePreco)
         
         
-        addConstraintsWithFormat("V:|-20-[v0(140)]", views: roupaImageView)
+        addConstraintsWithFormat("V:|-20-[v0(80)]", views: roupaImageView)
         addConstraintsWithFormat("V:|-20-[v0]", views: nameLabel)
         addConstraintsWithFormat("V:|-40-[v0]", views: text)
         addConstraintsWithFormat("V:|-100-[v0]", views: namePreco)
         
         
-        addConstraintsWithFormat("H:|[v0]|", views: dividiView)
-        addConstraintsWithFormat("V:[v0(1)]|", views: dividiView)
+        addConstraintsWithFormat("H:|-10-[v0]-20-|", views: dividiView)
+        addConstraintsWithFormat("V:[v0(3)]|", views: dividiView)
         
         
     }
     let roupaImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "blusa")
-        iv.contentMode = .ScaleAspectFill
+        iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
         iv.layer.cornerRadius = 5
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +76,7 @@ class ListaCell: BaseCell {
         
         let categoria = UILabel()
         categoria.text = "Nome categoria"
-        categoria.font = UIFont.systemFontOfSize(15)
+        categoria.font = UIFont.systemFont(ofSize: 15)
         
         return categoria
     }()
@@ -85,9 +84,9 @@ class ListaCell: BaseCell {
     let text: UILabel = {
         let texto = UILabel()
         texto.text = "Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico."
-        texto.font = UIFont.systemFontOfSize(14)
-        texto.numberOfLines = 3
-        texto.adjustsFontSizeToFitWidth = true
+        texto.font = UIFont.systemFont(ofSize: 14)
+        texto.numberOfLines = 2
+       
         
         return texto
     }()
@@ -95,15 +94,13 @@ class ListaCell: BaseCell {
     let namePreco: UILabel = {
         let label = UILabel()
         label.text = "R$ 190, 00"
-        label.font = UIFont.boldSystemFontOfSize(12)
-        
-        
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         return label
     }()
     
     let dividiView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+        view.backgroundColor = UIColor.rgb(230, green: 32, blue: 31)
         
         return view
     }()

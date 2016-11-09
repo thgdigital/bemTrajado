@@ -19,7 +19,8 @@ class GalerialCell: BaseCell {
                 
                 let url = "http://thiago.conquist.com.br/upload/"
                 
-                imageView.kf_setImageWithURL(NSURL(string: url+image))
+                //imageView.kf_setImageWithURL(NSURL(string: url+image))
+               // imageView.loadImageWithUrl(url+image, placeholder: UIImage(named: "placeholder"))
             }
         }
     }
@@ -27,9 +28,9 @@ class GalerialCell: BaseCell {
     let imageView: CustomImageView = {
         let iv = CustomImageView()
         iv.image = UIImage(named: "blusa")
-        iv.contentMode = .ScaleAspectFill
+        iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
-        iv.userInteractionEnabled = true
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     
@@ -38,7 +39,7 @@ class GalerialCell: BaseCell {
         addSubview(imageView)
         addConstraintsWithFormat("H:|[v0]|", views: imageView)
         addConstraintsWithFormat("H:|[v0]|", views: imageView)
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GalerialCell.animate)))
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animate)))
         
     }
     func animate() {

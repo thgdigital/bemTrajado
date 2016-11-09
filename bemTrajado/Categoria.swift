@@ -24,15 +24,15 @@ class Categoria: NSObject {
     var produtos: [Produtos]?
 
 
-    static func categoriasProdutos(completionHandler: ([Categoria]) -> ()) {
+    static func categoriasProdutos(_ completionHandler: @escaping ([Categoria] )  -> ()) {
         
         let urlString = "http://thiago.conquist.com.br/api/categoria"
         
-        Alamofire.request(.GET, urlString)
+        Alamofire.request(urlString)
             .validate()
             .responseJSON { response in
                 switch response.result {
-                case .Success:
+                case .success:
                     if response.result.value is NSArray {
                         
                         if let jsonObject = response.result.value {
@@ -66,16 +66,17 @@ class Categoria: NSObject {
                                     categoria.produtos?.append(produto)
                                     
                                     }
-                                    if categoria.produtos?.count > 0 {
+                                    if (categoria.produtos?.count)! > 0 {
                                         categorias.append(categoria)
                                     }
                                 }
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                                     completionHandler(categorias)
                                 })
                             }
                     }
-                case .Failure(let error):
+                case .failure(let error):
                     print(error)
             }
         }

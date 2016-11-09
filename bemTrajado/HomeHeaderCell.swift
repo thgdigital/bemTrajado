@@ -13,7 +13,7 @@ class HomeHeaderCell: BaseCell {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "banner")
-        iv.contentMode = .ScaleAspectFill
+        iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
         return iv
     }()
