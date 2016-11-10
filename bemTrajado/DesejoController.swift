@@ -11,9 +11,10 @@ import UIKit
 class DesejoController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
     let cdManager = CoreDataManager.sharedInstance
+   
     var produts : [Produtos]?
+    var titleRightBt = UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector(deleteCells))
     
     func buscarDados() -> [Produtos] {
         let predicate = NSPredicate(value: true)
@@ -57,45 +58,70 @@ class DesejoController: UIViewController, UITableViewDataSource, UITableViewDele
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar", style: .plain, target: self, action: #selector(deleteCells))//UIBarButtonItem(title:"Editar", style: .edit, target: self, action: #selector(deleteCells))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector(deleteCells))
+        
         
 
         // Do any additional setup after loading the view.
     }
     func deleteCells()  {
-    
-        self.tableView.setEditing(true, animated: true)
+        if tableView.isEditing  == false {
+            self.tableView.setEditing(true, animated: true)
+            
+        }else{
+            self.tableView.setEditing(false, animated: true)
+          
+        }
+        
        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
          produts =  buscarDados()
-       
+        tableView.reloadData()
+         self.tableView.setEditing(false, animated: false)
     }
     
-     func tableView( _ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    
+
+}
+extension DesejoController {
+    
+    func tableView( _ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if (self.tableView.isEditing) {
             return .delete;
         }
-        
         return .none;
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let commit = produts?[indexPath.row]
+            //container.viewContext.delete(commit)
+            produts?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+          
+        }
+        
+        
+        
+        
+        
         
     }
-   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = produts?.count{
             return count
         }
+        
         return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DesejoCell
-   
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DesejoCell
+        
         cell.layoutCell(produts?[indexPath.row])
-      
+        
         return cell
     }
-
 }
-
