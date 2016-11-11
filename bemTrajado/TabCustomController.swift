@@ -40,11 +40,13 @@ class TabCustomController: UITabBarController {
         navegacaoLocalicao.tabBarItem.image = UIImage(named: "ic_place")
         navegacaoLocalicao.tabBarItem.title = "Localização"
         
-        
-        let config = UINavigationController(rootViewController: ConfigController())
+        let  configController = storyboard.instantiateViewController(withIdentifier: "ConfigController") as! ConfigController
+        let config =  UINavigationController(rootViewController: configController)
         config.tabBarItem.image = UIImage(named: "ic_view_headline")
         config.tabBarItem.title = "Minha Conta"
         config.navigationItem.title = "Configurações"
+        
+        
         let chat = UINavigationController(rootViewController: ChatController())
         chat.tabBarItem.image = UIImage(named: "chat")
         chat.tabBarItem.title = "Chat"

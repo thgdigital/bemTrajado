@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class ConfigController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConfigController: UITableViewController {
     var login = FBSDKLoginManager()
     
 
@@ -43,13 +43,13 @@ class ConfigController: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
    
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
+//     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 2
+//    }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        return UITableViewCell()
+//    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    }
 
 }
