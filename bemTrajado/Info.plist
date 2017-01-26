@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -33,7 +33,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.624592997749-crm5keu4gu580tebuoja200g75tb1nm3</string>
+				<string>com.googleusercontent.apps.776904834145-md60dae37ggdbc700pcd3hp2roiliolo</string>
 			</array>
 		</dict>
 		<dict>
@@ -110,5 +110,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

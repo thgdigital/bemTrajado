@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class ConfigController: UITableViewController {
     var login = FBSDKLoginManager()
@@ -27,15 +28,14 @@ class ConfigController: UITableViewController {
     func addTapped(){
         login.logOut()
         GIDSignIn.sharedInstance().signOut()
-        if let _ = FBSDKAccessToken.current() {
-           
-        }else if  GIDSignIn.sharedInstance().hasAuthInKeychain() {
-            
-        }else{
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = LoginController()
-            
+        
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let logoutError {
+            print(logoutError)
         }
+        let loginController = LoginController()
+        present(loginController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

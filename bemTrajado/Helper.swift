@@ -8,6 +8,15 @@
 
 import UIKit
 
+import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+
+struct App {
+    //static let color = UIColor(r: 0, g: 97, b: 161)
+    static let ref = FIRDatabase.database().reference(fromURL: "https://bem-trajado.firebaseio.com/")
+}
+
 extension UIView {
     
     func addConstraintsWithFormat(_ format: String, views: UIView...) {

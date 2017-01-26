@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.0.1)
+  - Alamofire (4.3.0)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -20,21 +20,39 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKShareKit (~> 4.15)
-  - FBSDKCoreKit (4.17.0):
+  - FBSDKCoreKit (4.19.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.17.0):
+  - FBSDKLoginKit (4.19.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.17.0):
+  - FBSDKShareKit (4.19.0):
     - FBSDKCoreKit
-  - FirebaseAnalytics (3.5.1):
+  - Firebase (3.11.1):
+    - Firebase/Core (= 3.11.1)
+  - Firebase/Auth (3.11.1):
+    - Firebase/Core
+    - FirebaseAuth (= 3.1.0)
+  - Firebase/Core (3.11.1):
+    - FirebaseAnalytics (= 3.6.0)
+    - FirebaseCore (= 3.4.7)
+  - Firebase/Database (3.11.1):
+    - Firebase/Core
+    - FirebaseDatabase (= 3.1.1)
+  - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.4.4):
+  - FirebaseAuth (3.1.0):
+    - FirebaseAnalytics (~> 3.6)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (3.4.7):
     - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (3.1.1):
+    - FirebaseAnalytics (~> 3.5)
   - FirebaseInstanceID (1.0.8)
   - Google/Core (3.0.3):
     - FirebaseAnalytics (~> 3.2)
@@ -51,26 +69,28 @@ PODS:
     - GTMOAuth2 (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
-  - GoogleToolboxForMac/DebugUtils (2.1.0):
-    - GoogleToolboxForMac/Defines (= 2.1.0)
-  - GoogleToolboxForMac/Defines (2.1.0)
-  - GoogleToolboxForMac/NSData+zlib (2.1.0):
-    - GoogleToolboxForMac/Defines (= 2.1.0)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.0):
-    - GoogleToolboxForMac/DebugUtils (= 2.1.0)
-    - GoogleToolboxForMac/Defines (= 2.1.0)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.7):
-    - GTMSessionFetcher/Full (= 1.1.7)
-  - GTMSessionFetcher/Core (1.1.7)
-  - GTMSessionFetcher/Full (1.1.7):
-    - GTMSessionFetcher/Core (= 1.1.7)
-  - Kingfisher (3.2.0)
-  - SlideMenuControllerSwift (3.0.0)
-  - SwiftyJSON (3.1.1)
+  - GTMSessionFetcher (1.1.8):
+    - GTMSessionFetcher/Full (= 1.1.8)
+  - GTMSessionFetcher/Core (1.1.8)
+  - GTMSessionFetcher/Full (1.1.8):
+    - GTMSessionFetcher/Core (= 1.1.8)
+  - Kingfisher (3.3.2)
+  - RNActivityView (0.0.6)
+  - RNLoadingButton-Swift (4.0.2)
+  - SlideMenuControllerSwift (3.0.1)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -78,36 +98,46 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Firebase
+  - Firebase/Auth
+  - Firebase/Database
   - Google/SignIn
   - Kingfisher
+  - RNActivityView
+  - RNLoadingButton-Swift
   - SlideMenuControllerSwift
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
-  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
-  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
-  FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
-  FirebaseAnalytics: 6e58fc9b397664369ac7617fb0ba93fab6ba7b5b
-  FirebaseCore: d0ed25f27b6f9158eccc439f1be6f92e81207e28
+  FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c
+  FBSDKLoginKit: 83ca4d8f12a2022570af9fd6aacf27f6b425b99f
+  FBSDKShareKit: 5953758366278430dc322d5cdc906db361ed7f81
+  Firebase: 53b2343db1ebfa3eb16bdb4318b8bb65360b2220
+  FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
+  FirebaseAuth: b436e4ecebe068bf8e8c6e4e29de5756ffe7ee24
+  FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
+  FirebaseDatabase: 6de92187481ff0e8e124064f21742e95ee883b02
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
-  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
-  GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
-  Kingfisher: 50407d1d5dbc34965009d425a286342ff36a84ea
-  SlideMenuControllerSwift: 9c0a84f9a3fba51681debd7be77617094562ebcc
-  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  Kingfisher: 8e60094454aeb4746eb588eb57f794d891c6ea88
+  RNActivityView: 889126dc047fc6fa10aac88a13ebff677c53bf82
+  RNLoadingButton-Swift: 0be3a21a6ca07e00744200db4502566bca07405e
+  SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 9cffc40e452c9dba669ca60e9cb705881498dc58
+PODFILE CHECKSUM: 502e6b2bf15a5b86505488c51c3f14f47d458246
 
 COCOAPODS: 1.1.1

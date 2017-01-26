@@ -60,7 +60,7 @@ class DesejoController: UIViewController, UITableViewDataSource, UITableViewDele
         navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector(deleteCells))
         
-        
+       
 
         // Do any additional setup after loading the view.
     }
@@ -100,7 +100,7 @@ extension DesejoController {
             //container.viewContext.delete(commit)
             produts?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
+             tableView.separatorStyle = .none
           
         }
         
@@ -112,7 +112,8 @@ extension DesejoController {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = produts?.count{
-            return count
+         
+            return 0
         }
         
         return 0

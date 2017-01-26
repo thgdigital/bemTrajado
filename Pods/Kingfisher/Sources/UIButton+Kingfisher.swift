@@ -4,7 +4,7 @@
 //
 //  Created by Wei Wang on 15/4/13.
 //
-//  Copyright (c) 2016 Wei Wang <onevcat@gmail.com>
+//  Copyright (c) 2017 Wei Wang <onevcat@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -56,6 +56,7 @@ extension Kingfisher where Base: UIButton {
                          completionHandler: CompletionHandler? = nil) -> RetrieveImageTask
     {
         guard let resource = resource else {
+            base.setImage(placeholder, for: state)
             completionHandler?(nil, nil, .none, nil)
             return .empty
         }
@@ -126,6 +127,7 @@ extension Kingfisher where Base: UIButton {
                                    completionHandler: CompletionHandler? = nil) -> RetrieveImageTask
     {
         guard let resource = resource else {
+            base.setBackgroundImage(placeholder, for: state)
             completionHandler?(nil, nil, .none, nil)
             return .empty
         }

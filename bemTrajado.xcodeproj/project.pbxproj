@@ -27,6 +27,7 @@
 		846077561D1F1AB600773246 /* LocalizacaoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846077551D1F1AB600773246 /* LocalizacaoController.swift */; };
 		846077581D1F1FD000773246 /* LocalizacaoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846077571D1F1FD000773246 /* LocalizacaoCell.swift */; };
 		AFA8CF641D9D8C8100920E53 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8CF631D9D8C8100920E53 /* ImageHelper.swift */; };
+		AFAECB021E3A460900BE807B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAECB011E3A460900BE807B /* GoogleService-Info.plist */; };
 		AFCFB0E31DD2397D0012AC0C /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFB0E21DD2397D0012AC0C /* ChatController.swift */; };
 		AFCFB0E51DD363520012AC0C /* DesejoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFB0E41DD363520012AC0C /* DesejoController.swift */; };
 		AFCFB0E71DD36A050012AC0C /* DesejoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFB0E61DD36A050012AC0C /* DesejoCell.swift */; };
@@ -73,6 +74,7 @@
 		846077571D1F1FD000773246 /* LocalizacaoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizacaoCell.swift; sourceTree = "<group>"; };
 		AF69E3EE1DC1511A00AB6320 /* bemTrajado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bemTrajado.entitlements; sourceTree = "<group>"; };
 		AFA8CF631D9D8C8100920E53 /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		AFAECB011E3A460900BE807B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFCFB0E21DD2397D0012AC0C /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		AFCFB0E41DD363520012AC0C /* DesejoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesejoController.swift; sourceTree = "<group>"; };
 		AFCFB0E61DD36A050012AC0C /* DesejoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesejoCell.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				846077361D1DE6BF00773246 /* Assets.xcassets */,
 				846077381D1DE6BF00773246 /* LaunchScreen.storyboard */,
 				8460773B1D1DE6BF00773246 /* Info.plist */,
+				AFAECB011E3A460900BE807B /* GoogleService-Info.plist */,
 			);
 			path = bemTrajado;
 			sourceTree = "<group>";
@@ -260,7 +263,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "THG Digital";
 				TargetAttributes = {
 					8460772B1D1DE6BF00773246 = {
@@ -300,6 +303,7 @@
 			files = (
 				8460773A1D1DE6BF00773246 /* LaunchScreen.storyboard in Resources */,
 				C24E4ACB1D4A4E8300FF9EE2 /* GoogleService-Info.plist in Resources */,
+				AFAECB021E3A460900BE807B /* GoogleService-Info.plist in Resources */,
 				846077371D1DE6BF00773246 /* Assets.xcassets in Resources */,
 				846077351D1DE6BF00773246 /* Main.storyboard in Resources */,
 			);

@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 import Google
 import FBSDKCoreKit
+import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
@@ -23,22 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+    
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        FIRApp.configure()
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = LoginController()
-        
-        if let _ = FBSDKAccessToken.current() {
-            homeWimdows()
-        }else if  GIDSignIn.sharedInstance().hasAuthInKeychain() {
-            homeWimdows()
-        }else{
-            window?.rootViewController = LoginController()
-
-        }
-        
+        window?.rootViewController = TabCustomController()
         
         UINavigationBar.appearance().barTintColor = UIColor.rgb(230, green: 32, blue: 31)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -46,38 +41,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         application.statusBarStyle = .lightContent
-//        
-//        let statusBarBackgroundView = UIView()
-//        statusBarBackgroundView.backgroundColor = UIColor.rgb(194, green: 31, blue: 31)
-//        
-//        window?.addSubview(statusBarBackgroundView)
-//        window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
-//        window?.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
+
         
         
         return true
     }
-//    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-//        return GIDSignIn.sharedInstance().handleURL(url,
-//                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
-//                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-//        
-//    }
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 
-        if(url.scheme?.isEqual("fb623932531109297"))! {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+
+       
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url,  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         
+                GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
             
-            return FBSDKApplicationDelegate.sharedInstance().application(
-                application,
-                open: url,
-                sourceApplication: sourceApplication,
-                annotation: annotation)
             
-        } else {
-            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
-            
+            return handled
+       
+    }
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let err = error {
+            print("Falhar ao fazer login com google", err)
+            return
         }
+        let users = User()
+        users.email = user.profile.email
+        users.name = user.profile.familyName
+        
+        guard let authentication = user.authentication else { return }
+        
+        
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication.idToken),
+                                                          accessToken: (authentication.accessToken))
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            guard let uid = user?.uid else {
+                return
+            }
+           
+            
+            let usersReference = App.ref.child("users").child(uid)
+            let values = ["name": users.name, "email": users.email]
+            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                
+                if err != nil {
+                    print(err)
+                    return
+                }
+                //successfully logged in our user
+            self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            })
+
+        })
     }
     
     

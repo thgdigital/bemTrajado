@@ -9,8 +9,11 @@
 import UIKit
 import Google
 import FBSDKLoginKit
+import Firebase
+import RNActivityView
 
-class LoginController: UIViewController {
+
+class LoginController: UIViewController, GIDSignInUIDelegate {
     
     let contatinerView: UIView = {
         let view = UIView()
@@ -69,19 +72,16 @@ class LoginController: UIViewController {
         contatinerView.addSubview(googleButton)
        
         
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        
-        if configureError != nil {
-            print(configureError)
-        }
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
+       
+       GIDSignIn.sharedInstance().uiDelegate = self
+       //GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().language = "pt-PT"
         
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
             //googleButton.hidden = true
         }
+        
+        
         //x,y,w,h
         contatinerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         contatinerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -110,36 +110,30 @@ class LoginController: UIViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
-}
-extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate{
-    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
+    func showActivity(){
+        self.view.rn_activityView.show(true)
+       
     }
+}
+extension LoginController: FBSDKLoginButtonDelegate{
 
-    
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: NSError!) {
-        if error != nil{
-            print(error)
-            return
+    func handleLogout() {
+        
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let logoutError {
+            print(logoutError)
         }
         
-        let users = User()
-        users.email = user.profile.email
-        users.name = user.profile.familyName
-        users.avatar = user.profile.imageURL(withDimension: 400).absoluteString
-        fecthProfile(users)
-        
-        
-    }
-    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-       // self.dismissViewControllerAnimated(true, completion: nil)
+       
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil{
             print(error)
             return
         }
+        
+         self.showActivity()
         let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, user, requestError) -> Void in
             
@@ -147,6 +141,10 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
                 //print(requestError)
                 return
             }
+            
+           
+            
+            
             if let dataDict = user as? [String:AnyObject] {
             let email = dataDict["email"] as? String
             let firstName = dataDict["first_name"] as? String
@@ -164,8 +162,35 @@ extension LoginController: FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSig
             }
             users.avatar = pictureUrl
             
-            self.fecthProfile(users)
+          //  self.fecthProfile(users)
+                
+            let acessToken = FBSDKAccessToken.current()
+                
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: (acessToken?.tokenString)!)
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                if error != nil {
+                    print("Firebase error ", error )
+                }
+                
+                guard let uid = user?.uid else {
+                    return
+                }
+                
+                let usersReference = App.ref.child("users").child(uid)
+                let values = ["name": users.name, "email": users.email]
+                usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                    
+                    if err != nil {
+                        print(err)
+                        return
+                    }
+                     self.showActivity()
+                    //successfully logged in our user
+                    self.dismiss(animated: true, completion: nil)
+                })
                
+                
+                })
               
             }
         })

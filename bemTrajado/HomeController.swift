@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     
@@ -35,8 +35,11 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
             self.categorias = categoria
             self.collectionView?.reloadData()
         }
-        
-        
+        if FIRAuth.auth()?.currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+        }
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
         collectionView?.register(ProdutoHomeCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.register(HomeHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: cellHeaderId)
@@ -84,7 +87,18 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }
-
+    
+    func handleLogout() {
+        
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+        
+        let loginController = LoginController()
+        present(loginController, animated: true, completion: nil)
+    }
 }
 
 
