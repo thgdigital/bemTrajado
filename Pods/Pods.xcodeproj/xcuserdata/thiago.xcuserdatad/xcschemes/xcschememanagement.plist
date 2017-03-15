@@ -84,12 +84,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SlideMenuControllerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>libwebp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -102,17 +112,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>16842B11B7C3AEF3542E0CA215A1DC57</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44CAD6CE523055ED339E87154473A254</key>
+		<key>3BCA5A01634255C7FDC52B6A9B1083CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>55453B0CEBA38D2B7FACF2536DCA532A</key>
+		<key>44CAD6CE523055ED339E87154473A254</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,6 +142,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>672EC29199350936FCE332E17C7D759E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
@@ -137,12 +157,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>742C7B0671426C8ED5BB7FD798FFF4F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8059383FB43CD05CBE8F074BED07F337</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A513743F01C696C0758963AE1DBC1515</key>
+		<key>8B621AD8777CDD5FA943BEBA56F6B8D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A79DC8F5606F6D28D8D17C45867D0779</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,27 +197,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7C81F0C1773FEEE4B2CAD5A6597F416</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E070F4C7C88D28D5F0CEB02EC3AAF1B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E33734664D1FCE0AF787DA10D653562B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -16,6 +16,7 @@ class User: NSObject, NSCoding {
     var email: String?
     var avatar:String?
     
+
     
     static func cadUser(_ user: User, completionHandler: @escaping (User) -> ()){
     let urlString = "http://thiago.conquist.com.br/api/user/login-rede-social"

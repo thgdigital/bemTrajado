@@ -111,8 +111,13 @@ class LoginController: UIViewController, GIDSignInUIDelegate {
         return .lightContent
     }
     func showActivity(){
-        self.view.rn_activityView.show(true)
+        self.view.showActivityView(withLabel: "Carregando..")
        
+    }
+    func alertError(messages: String){
+        let alert = UIAlertController(title: "Opss Error", message: messages , preferredStyle: UIAlertControllerStyle.alert)
+         self.present(alert, animated: true, completion: nil)
+
     }
 }
 extension LoginController: FBSDKLoginButtonDelegate{
@@ -130,6 +135,7 @@ extension LoginController: FBSDKLoginButtonDelegate{
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil{
             print(error)
+            self.alertError(messages: error.localizedDescription)
             return
         }
         
@@ -139,6 +145,8 @@ extension LoginController: FBSDKLoginButtonDelegate{
             
             if requestError != nil {
                 //print(requestError)
+                self.view.hideActivityView()
+                
                 return
             }
             

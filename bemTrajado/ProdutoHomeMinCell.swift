@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SDWebImage
 
 class ProdutoHomeMinCell: BaseCell {
     
@@ -22,10 +23,7 @@ class ProdutoHomeMinCell: BaseCell {
                 namePreco.text = "R$ \(preco)"
             }
             if let image = produtos?.image {
-                
-                let url = "http://thiago.conquist.com.br/upload/"
-
-               // imageView.loadImageWithUrl(url+image, placeholder: UIImage(named: "placeholder"))
+               imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "bemTrajado"))
                
             }
         }

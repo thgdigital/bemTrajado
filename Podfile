@@ -22,4 +22,6 @@ target 'bemTrajado' do
   pod 'Firebase/Database'
   pod 'RNLoadingButton-Swift'
   pod 'RNActivityView'
+  pod 'DZNEmptyDataSet'
+  pod 'SDWebImage/WebP'
 end

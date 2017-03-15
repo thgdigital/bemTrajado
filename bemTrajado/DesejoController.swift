@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class DesejoController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DesejoController: UIViewController, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     let cdManager = CoreDataManager.sharedInstance
@@ -60,9 +61,17 @@ class DesejoController: UIViewController, UITableViewDataSource, UITableViewDele
         navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector(deleteCells))
         
-       
+       self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let atrributed = NSAttributedString(string:"Opss lista de desejo vazio", attributes:
+            [NSForegroundColorAttributeName: UIColor.lightGray])
+        return atrributed
     }
     func deleteCells()  {
         if tableView.isEditing  == false {
@@ -110,12 +119,15 @@ extension DesejoController {
         
         
     }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      /*
         if let count = produts?.count{
          
             return 0
         }
-        
+*/
         return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

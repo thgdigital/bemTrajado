@@ -26,7 +26,7 @@ class Categoria: NSObject {
 
     static func categoriasProdutos(_ completionHandler: @escaping ([Categoria] )  -> ()) {
         
-        let urlString = "http://thiago.conquist.com.br/api/categoria"
+        let urlString = "http://private-72625-api389.apiary-mock.com/categorias"
         
         Alamofire.request(urlString)
             .validate()

@@ -70,7 +70,7 @@ class CustomImageView: UIImageView {
                     self.image = imageToCache
                 }
                 
-               // imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+             //  imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
             })
             
         }).resume()

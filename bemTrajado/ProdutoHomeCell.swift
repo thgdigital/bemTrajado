@@ -51,12 +51,12 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         return categoria
     }()
     
-    let dividiView : UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
-        
-        return view
-    }()
+//    let dividiView : UIView = {
+//        let view = UIView()
+//        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+//        
+//        return view
+//    }()
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProdutoHomeMinCell
         cell.produtos = categoria?.produtos?[(indexPath as NSIndexPath).item]
@@ -104,7 +104,7 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         super.setupViews()
         
         addSubview(collectionView)
-        addSubview(dividiView)
+//        addSubview(dividiView)
         addSubview(nameLabel)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -119,8 +119,8 @@ class ProdutoHomeCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         addConstraintsWithFormat("H:|-14-[v0]", views: nameLabel)
         addConstraintsWithFormat("V:|-4-[v0]", views: nameLabel)
         
-        addConstraintsWithFormat("H:|[v0]|", views: dividiView)
-        addConstraintsWithFormat("V:[v0(1)]|", views: dividiView)
+//        addConstraintsWithFormat("H:|[v0]|", views: dividiView)
+//        addConstraintsWithFormat("V:[v0(1)]|", views: dividiView)
     }
     
 }

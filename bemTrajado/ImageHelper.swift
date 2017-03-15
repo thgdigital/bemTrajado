@@ -9,8 +9,8 @@
 import UIKit
 import Kingfisher
 
-//public typealias ImageLoadCompletionBlock = (_ image: UIImage?) -> Void
-//
+public typealias ImageLoadCompletionBlock = (_ image: UIImage?) -> Void
+
 //class ImageHelper: NSObject {
 //    
 //    class func loadImageWithUrl(_ url: URL, completion: @escaping ImageLoadCompletionBlock) {
@@ -19,8 +19,8 @@ import Kingfisher
 //        let myCache = ImageCache(name: url.absoluteString)
 //        
 //        let optionInfo: KingfisherOptionsInfo = [
-//            .ForceRefresh,
-//            .TargetCache(myCache)
+//            .forceRefresh,
+//            .targetCache(myCache)
 //        ]
 //        
 //        downloader.downloadImageWithURL(url, options: optionInfo, progressBlock: nil) { (image, error, imageURL, originalData) -> () in

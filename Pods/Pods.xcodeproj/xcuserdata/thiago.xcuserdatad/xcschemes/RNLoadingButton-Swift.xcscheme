@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C7C81F0C1773FEEE4B2CAD5A6597F416"
+               BlueprintIdentifier = "8059383FB43CD05CBE8F074BED07F337"
                BuildableName = "RNLoadingButton_Swift.framework"
                BlueprintName = "RNLoadingButton-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C7C81F0C1773FEEE4B2CAD5A6597F416"
+            BlueprintIdentifier = "8059383FB43CD05CBE8F074BED07F337"
             BuildableName = "RNLoadingButton_Swift.framework"
             BlueprintName = "RNLoadingButton-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
