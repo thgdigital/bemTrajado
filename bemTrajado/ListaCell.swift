@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 
 class ListaCell: BaseCell {
     var left :NSLayoutAnchor<AnyObject>?

@@ -17,10 +17,11 @@ class GalerialCell: BaseCell {
         didSet {
             if let image = galeria?.image {
                 
-                let url = "http://thiago.conquist.com.br/upload/"
+               
                 
                 //imageView.kf_setImageWithURL(NSURL(string: url+image))
                // imageView.loadImageWithUrl(url+image, placeholder: UIImage(named: "placeholder"))
+                imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "bemTrajado"))
             }
         }
     }

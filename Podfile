@@ -24,4 +24,5 @@ target 'bemTrajado' do
   pod 'RNActivityView'
   pod 'DZNEmptyDataSet'
   pod 'SDWebImage/WebP'
+  pod "VMaskTextField"
 end

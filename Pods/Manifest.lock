@@ -110,6 +110,7 @@ PODS:
     - SDWebImage/Core
   - SlideMenuControllerSwift (3.0.1)
   - SwiftyJSON (3.1.4)
+  - VMaskTextField (1.0.8)
 
 DEPENDENCIES:
   - Alamofire
@@ -127,6 +128,7 @@ DEPENDENCIES:
   - SDWebImage/WebP
   - SlideMenuControllerSwift
   - SwiftyJSON
+  - VMaskTextField
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -156,7 +158,8 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  VMaskTextField: e77fe33633f999c5c38e70bed0afece0625624a4
 
-PODFILE CHECKSUM: 5b69e06aeb010e5b92a2f3568ac30bd1dd16b85b
+PODFILE CHECKSUM: 2d545b50183aac62d7b5834589480865a12d4e84
 
 COCOAPODS: 1.1.1

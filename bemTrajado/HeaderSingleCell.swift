@@ -16,9 +16,8 @@ class HeaderSingleCell: BaseCell {
         didSet {
             if let image = produto?.image {
                 
-                let url = "http://thiago.conquist.com.br/upload/"
-                
-                imageView.loadImageUsingUrlString(url+image)
+               
+               imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "bemTrajado"))
             
             }
             

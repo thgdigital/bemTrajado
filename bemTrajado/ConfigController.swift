@@ -10,6 +10,8 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 import RNActivityView
+import VMaskTextField
+
 
 
 class ConfigController: UITableViewController, UITextFieldDelegate {
@@ -18,20 +20,21 @@ class ConfigController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
 
     @IBOutlet weak var nomeTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var telefoneTextField: UITextField!
+   // @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var telefoneTextField: VMaskTextField!
     
     
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
+        telefoneTextField.mask = "(##) ####-#####"
         nomeTextField.delegate = self
-        emailTextField.delegate = self
+//        emailTextField.delegate = self
         telefoneTextField.delegate = self
      
        
         
-        super.viewDidLoad()
+        
         navigationItem.title = "CONFIGURAÇÕES"
         view.backgroundColor = UIColor.white
         avatarImageView.contentMode = .scaleAspectFill
@@ -43,6 +46,10 @@ class ConfigController: UITableViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Sair", style: .plain, target: self, action: #selector(addTapped))
         // Do any additional setup after loading the view.
       listUser()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return telefoneTextField.shouldChangeCharacters(in: range, replacementString: string)
     }
     func addTapped(){
         login.logOut()
@@ -67,10 +74,7 @@ class ConfigController: UITableViewController, UITextFieldDelegate {
                 
                 self.nomeTextField?.text = name
             }
-            if let email = value?["email"] as? String{
-                
-                self.emailTextField?.text = email
-            }
+           
             if let telefone = value?["telefone"] as? String{
                 
                 self.telefoneTextField?.text = telefone
@@ -83,15 +87,38 @@ class ConfigController: UITableViewController, UITextFieldDelegate {
         }
     }
     @IBAction func salvarAlteracao(_ sender: Any) {
-        nomeTextField.resignFirstResponder()
-        emailTextField.resignFirstResponder()
-        telefoneTextField.resignFirstResponder()
         
+        nomeTextField.resignFirstResponder()
+//        emailTextField.resignFirstResponder()
+        telefoneTextField.resignFirstResponder()
+        guard let  nome = nomeTextField.text, let telefone = telefoneTextField.text else {
+            print("Form is not valid")
+        
+            return
+        }
+        
+        self.view.showActivityView(withLabel: "Salvando dados..")
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            self.view.hideActivityView()
+            return
+        }
+        
+        let usersReference = App.ref.child("users").child(uid)
+        let values = ["name": nome, "telefone": telefone]
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            
+            if err != nil {
+                print(err)
+                return
+            }
+            self.view.hideActivityView()
+           
+        })
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         nomeTextField.resignFirstResponder()
-        emailTextField.resignFirstResponder()
+//        emailTextField.resignFirstResponder()
         telefoneTextField.resignFirstResponder()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

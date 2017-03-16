@@ -25,7 +25,7 @@ class Produtos: NSObject {
     
     
     static func getProduto(_ id: NSNumber, completionHandler: @escaping (Produtos) -> ()) {
-        let urlString = "http://thiago.conquist.com.br/api/produtos/\(id)/ver"
+        let urlString = "http://private-72625-api389.apiary-mock.com/produtos/\(id)"
         Alamofire.request(urlString)
             .validate()
             .responseJSON { response in

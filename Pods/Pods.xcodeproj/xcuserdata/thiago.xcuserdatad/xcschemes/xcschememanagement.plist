@@ -99,6 +99,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>VMaskTextField-VMaskTextField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VMaskTextField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>libwebp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,22 +117,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0A11477B1DAE6ECADC84C8B6DD9B6266</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16842B11B7C3AEF3542E0CA215A1DC57</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3BCA5A01634255C7FDC52B6A9B1083CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,11 +147,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>672EC29199350936FCE332E17C7D759E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
@@ -157,12 +157,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>742C7B0671426C8ED5BB7FD798FFF4F3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8059383FB43CD05CBE8F074BED07F337</key>
+		<key>755134317EBE5B0570D893C9EBD846FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,7 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B621AD8777CDD5FA943BEBA56F6B8D0</key>
+		<key>99A8F86E1AF811D63B0C3450D25D517E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A187EB4172B6EA8716C2C79D2E1192A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,6 +192,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B2A856A49912BE17D5FB6BFC769C4E7F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C47E337F5E3A95F8437E789C14D509A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C4944FEC314D1A66588651D006273ADE</key>
 		<dict>
 			<key>primary</key>
@@ -203,6 +213,16 @@
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F118D6F10819FA1ED6F19D289E13CFAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA43629024860EC7F92D438D8AC8017D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

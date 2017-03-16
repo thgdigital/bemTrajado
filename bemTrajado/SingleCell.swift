@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 
 
 class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -26,6 +26,7 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
             if let descricao = produto?.descricao {
                 text.text = descricao
             }
+           
             
             
           collectionView.reloadData()

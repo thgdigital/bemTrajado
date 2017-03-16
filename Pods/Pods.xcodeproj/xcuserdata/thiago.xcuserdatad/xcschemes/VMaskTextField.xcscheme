@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0A11477B1DAE6ECADC84C8B6DD9B6266'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = 'A187EB4172B6EA8716C2C79D2E1192A8'
+               BlueprintName = 'VMaskTextField'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'VMaskTextField.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
