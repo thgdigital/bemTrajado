@@ -20,36 +20,37 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKShareKit (~> 4.15)
-  - FBSDKCoreKit (4.20.1):
+  - FBSDKCoreKit (4.23.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.20.1):
+  - FBSDKLoginKit (4.23.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.20.1):
+  - FBSDKShareKit (4.23.0):
     - FBSDKCoreKit
-  - Firebase (3.14.0):
-    - Firebase/Core (= 3.14.0)
-  - Firebase/Auth (3.14.0):
+  - Firebase (3.17.0):
+    - Firebase/Core (= 3.17.0)
+  - Firebase/Auth (3.17.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
-  - Firebase/Core (3.14.0):
-    - FirebaseAnalytics (= 3.7.0)
-    - FirebaseCore (= 3.5.1)
-  - Firebase/Database (3.14.0):
+  - Firebase/Core (3.17.0):
+    - FirebaseAnalytics (= 3.9.0)
+    - FirebaseCore (= 3.6.0)
+  - Firebase/Database (3.17.0):
     - Firebase/Core
     - FirebaseDatabase (= 3.1.2)
-  - FirebaseAnalytics (3.7.0):
-    - FirebaseCore (~> 3.5)
+  - FirebaseAnalytics (3.9.0):
+    - FirebaseCore (~> 3.6)
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseAuth (3.1.1):
     - FirebaseAnalytics (~> 3.7)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (3.5.1):
+  - FirebaseCore (3.6.0):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (3.1.2):
     - FirebaseAnalytics (~> 3.7)
-  - FirebaseInstanceID (1.0.9)
+  - FirebaseInstanceID (1.0.10):
+    - FirebaseCore (~> 3.6)
   - Google/Core (3.0.3):
     - FirebaseAnalytics (~> 3.2)
   - Google/SignIn (3.0.3):
@@ -72,36 +73,39 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.9):
-    - GTMSessionFetcher/Full (= 1.1.9)
-  - GTMSessionFetcher/Core (1.1.9)
-  - GTMSessionFetcher/Full (1.1.9):
-    - GTMSessionFetcher/Core (= 1.1.9)
-  - Kingfisher (3.5.2)
-  - libwebp (0.5.1):
-    - libwebp/core (= 0.5.1)
-    - libwebp/dec (= 0.5.1)
-    - libwebp/demux (= 0.5.1)
-    - libwebp/dsp (= 0.5.1)
-    - libwebp/enc (= 0.5.1)
-    - libwebp/mux (= 0.5.1)
-    - libwebp/utils (= 0.5.1)
-    - libwebp/webp (= 0.5.1)
-  - libwebp/core (0.5.1):
+  - GTMSessionFetcher (1.1.10):
+    - GTMSessionFetcher/Full (= 1.1.10)
+  - GTMSessionFetcher/Core (1.1.10)
+  - GTMSessionFetcher/Full (1.1.10):
+    - GTMSessionFetcher/Core (= 1.1.10)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Kingfisher (3.9.1)
+  - libwebp (0.6.0):
+    - libwebp/core (= 0.6.0)
+    - libwebp/dec (= 0.6.0)
+    - libwebp/demux (= 0.6.0)
+    - libwebp/dsp (= 0.6.0)
+    - libwebp/enc (= 0.6.0)
+    - libwebp/mux (= 0.6.0)
+    - libwebp/utils (= 0.6.0)
+    - libwebp/webp (= 0.6.0)
+  - libwebp/core (0.6.0):
     - libwebp/webp
-  - libwebp/dec (0.5.1):
+  - libwebp/dec (0.6.0):
     - libwebp/core
-  - libwebp/demux (0.5.1):
+  - libwebp/demux (0.6.0):
     - libwebp/core
-  - libwebp/dsp (0.5.1):
+  - libwebp/dsp (0.6.0):
     - libwebp/core
-  - libwebp/enc (0.5.1):
+  - libwebp/enc (0.6.0):
     - libwebp/core
-  - libwebp/mux (0.5.1):
+  - libwebp/mux (0.6.0):
     - libwebp/core
-  - libwebp/utils (0.5.1):
+  - libwebp/utils (0.6.0):
     - libwebp/core
-  - libwebp/webp (0.5.1)
+  - libwebp/webp (0.6.0)
   - RNActivityView (0.0.6)
   - RNLoadingButton-Swift (4.0.2)
   - SDWebImage/Core (4.0.0)
@@ -115,13 +119,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - DZNEmptyDataSet
-  - FacebookCore
-  - FacebookLogin
-  - FacebookShare
+  - FacebookCore (~> 0.2)
+  - FacebookLogin (~> 0.2)
+  - FacebookShare (~> 0.2)
   - Firebase
   - Firebase/Auth
   - Firebase/Database
   - Google/SignIn
+  - JSQMessagesViewController
   - Kingfisher
   - RNActivityView
   - RNLoadingButton-Swift
@@ -137,22 +142,24 @@ SPEC CHECKSUMS:
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
-  FBSDKCoreKit: 39a3569652983bf8666620dd334804c9057ae9b2
-  FBSDKLoginKit: 17092ff61a18c54ca423aebc18c5acc2e5a4a728
-  FBSDKShareKit: 4f37934d9ee9500d2d35752595816dc35f967478
-  Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
-  FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
+  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
+  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
+  FBSDKShareKit: 65751c3b9937ab9d594e6c37611ecc115ceeb448
+  Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
+  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
-  FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
+  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
-  FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
+  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
-  GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
-  Kingfisher: 9950e382c500b6834ce004c7c4131c444e90c3a1
-  libwebp: b9126f8982a95370cf4eaad9bb3fefd57f052c15
+  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
+  libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
   RNActivityView: 889126dc047fc6fa10aac88a13ebff677c53bf82
   RNLoadingButton-Swift: 0be3a21a6ca07e00744200db4502566bca07405e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
@@ -160,6 +167,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   VMaskTextField: e77fe33633f999c5c38e70bed0afece0625624a4
 
-PODFILE CHECKSUM: 2d545b50183aac62d7b5834589480865a12d4e84
+PODFILE CHECKSUM: efd10febcff507c32cdfd96e2bf19f669a78361f
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

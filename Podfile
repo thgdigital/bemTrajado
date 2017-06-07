@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '9.0'
 
 target 'bemTrajado' do
 
@@ -13,9 +13,9 @@ target 'bemTrajado' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'Google/SignIn'
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FacebookShare'
+  pod 'FacebookCore', '~> 0.2'
+  pod 'FacebookLogin', '~> 0.2'
+  pod 'FacebookShare', '~> 0.2'
   pod 'SlideMenuControllerSwift'
   pod 'Firebase'
   pod 'Firebase/Auth'
@@ -25,4 +25,5 @@ target 'bemTrajado' do
   pod 'DZNEmptyDataSet'
   pod 'SDWebImage/WebP'
   pod "VMaskTextField"
+  pod 'JSQMessagesViewController'
 end

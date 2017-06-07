@@ -26,9 +26,7 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
             if let descricao = produto?.descricao {
                 text.text = descricao
             }
-           
-            
-            
+            print(produto?.galeria?.count)
           collectionView.reloadData()
         }
         
@@ -56,8 +54,7 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         let botao = UIButton(type: .system)
         botao.setTitle("Adicionar a Lista", for: UIControlState())
        botao.setTitleColor(UIColor.white, for: UIControlState())
-       // botao.layer.borderColor = UIColor(red: 0, green: 129/255, blue: 250/255, alpha: 1).CGColor
-        //botao.layer.borderWidth = 1
+    
         botao.backgroundColor = UIColor.rgb(194, green: 31, blue: 31)
         botao.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return botao
@@ -67,7 +64,6 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         texto.text = "Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico."
         texto.font = UIFont.systemFont(ofSize: 14)
         texto.numberOfLines = 0
-      //  texto.textColor = UIColor.darkTextColor()
         return texto
     }()
     
@@ -97,6 +93,10 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        guard isGallary() else{
+            return CGSize(width: 0, height: 0)
+        }
         return CGSize(width: 200, height: 100)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -107,6 +107,27 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         
         collectionView.collectionViewLayout.invalidateLayout()
     }
+    
+    
+     private func isGallary() -> Bool {
+        
+        guard let _ =  produto?.galeria?.count else{
+            return false
+        }
+   
+        return true
+    }
+    private func setupLayout(){
+        guard  isGallary() else {
+            addConstraintsWithFormat("V:|-5-[v0]-5-[v1]-5-[v2]-5-[v3(50)]", views:  nameLabel, namePreco, text, buyBotao)
+            addConstraintsWithFormat("V:|-5-[v0(0)]", views:  collectionView)
+         
+          return
+        }
+        addConstraintsWithFormat("V:[v0]-5-[v1]-5-[v2]-5-[v3(50)]-30-|", views:  nameLabel, namePreco, text, buyBotao)
+        addConstraintsWithFormat("V:|-5-[v0(200)]", views:  collectionView)
+    }
+    
     override func setupViews() {
         super.setupViews()
         
@@ -120,22 +141,15 @@ class SingleCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+        collectionView.register(GalerialCell.self, forCellWithReuseIdentifier: cellId)
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         
-        addConstraintsWithFormat("H:|-14-[v0]-14-|", views: nameLabel)
-        addConstraintsWithFormat("H:|-14-[v0]-14-|", views: namePreco)
+        addConstraintsWithFormat("H:|-5-[v0]-14-|", views: nameLabel)
+        addConstraintsWithFormat("H:|-5-[v0]-14-|", views: namePreco)
         
- addConstraintsWithFormat("H:|-14-[v0]-14-|", views: buyBotao)
-        addConstraintsWithFormat("H:|-14-[v0]|", views: text)
-        
-        addConstraintsWithFormat("V:[v0]-5-[v1]-5-[v2]-5-[v3(50)]-80-|", views:  nameLabel, namePreco, text, buyBotao)
-       // addConstraintsWithFormat("V:[v0]-5-[v1]-5-[v2]-80-|", views:  nameLabel, namePreco, text)
-        
-        addConstraintsWithFormat("V:|-5-[v0(200)]", views:  collectionView)
-        
-        
-        collectionView.register(GalerialCell.self, forCellWithReuseIdentifier: cellId)
+        addConstraintsWithFormat("H:|-5-[v0]-14-|", views: buyBotao)
+        addConstraintsWithFormat("H:|-5-[v0]|", views: text)
+        setupLayout()
         
         buyBotao.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pedido)))
     }

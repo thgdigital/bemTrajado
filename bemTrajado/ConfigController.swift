@@ -117,12 +117,10 @@ class ConfigController: UITableViewController, UITextFieldDelegate {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        nomeTextField.resignFirstResponder()
-//        emailTextField.resignFirstResponder()
-        telefoneTextField.resignFirstResponder()
+   
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        textField.endEditing(true)
         return true
     }
     

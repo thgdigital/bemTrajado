@@ -54,7 +54,8 @@ class TabCustomController: UITabBarController {
         if verifica(){
         }
         
-        viewControllers = [navigaitorHome,carrinho,chat, navegacaoLocalicao, config]
+//        viewControllers = [navigaitorHome,carrinho,chat, navegacaoLocalicao, config]
+        viewControllers = [navigaitorHome,chat, navegacaoLocalicao, config]
         
         tabBar.isTranslucent = false
     }

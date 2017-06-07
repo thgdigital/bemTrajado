@@ -49,35 +49,13 @@ class ListaDesejosController: UICollectionViewController, UICollectionViewDelega
         navigationItem.titleView = titleLabel
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ListaCell.self, forCellWithReuseIdentifier: cellId)
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(deleteC))
-//       navigationItem.rightBarButtonItem = editButtonItem
+
         if let indexPath = getIndexPathForSelectedCell() {
             highlightCell(indexPath, flag: false)
         }
-        
-       // toolBar.hidden = true
+
     }
-//    func deleteCells(sender: AnyObject) {
-//        
-//       // var deletedFruits:[Fruit] = []
-//        
-//        let indexpaths = collectionView?.indexPathsForSelectedItems()
-//       
-//        if let indexpaths = indexpaths {
-//            
-//            for item  in indexpaths {
-//                collectionView?.deselectItemAtIndexPath((item), animated: true)
-//                // fruits for section
-//                //let sectionfruits = dataSource.fruitsInGroup(item.section)
-//                deletedFruits.append(sectionfruits[item.row])
-//            }
-//            
-//           // dataSource.deleteItems(deletedFruits)
-//            
-//            collectionView?.deleteItemsAtIndexPaths(indexpaths)
-//        }
-//    }
-//
+
 
     
      func buscarDados() -> [Produtos] {

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FA43629024860EC7F92D438D8AC8017D'
+               BlueprintIdentifier = 'A3BA2F14BE68CCB1A822015EE1268070'
                BlueprintName = 'RNActivityView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'RNActivityView.framework'>

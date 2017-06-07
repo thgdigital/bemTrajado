@@ -107,7 +107,6 @@ class SingleProdutoController: UICollectionViewController,UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SingleCell
         
-        
         cell.produto = produto
         cell.singleController = self
         
@@ -117,13 +116,19 @@ class SingleProdutoController: UICollectionViewController,UICollectionViewDelega
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 400)
+        if let _ =  produto?.galeria?.count{
+            
+            return CGSize(width: view.frame.width, height: 400)
+        }
+        return CGSize(width: view.frame.width, height: 0)
+        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-         return CGSize(width: view.frame.width, height: 240)
+        
+        return CGSize(width: view.frame.width, height: 240)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

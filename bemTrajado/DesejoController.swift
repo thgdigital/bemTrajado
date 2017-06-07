@@ -59,36 +59,46 @@ class DesejoController: UIViewController, UITableViewDataSource, UITableViewDele
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector(deleteCells))
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector(deleteCells))
         
-       self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         self.tableView.tableFooterView = UIView()
 
         // Do any additional setup after loading the view.
     }
     
+    
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let atrributed = NSAttributedString(string:"Opss lista de desejo vazio", attributes:
             [NSForegroundColorAttributeName: UIColor.lightGray])
         return atrributed
     }
+    func configTitleItemBar(){
+        self.navigationItem.rightBarButtonItem?.title =  tableView.isEditing ? "Cancelar" : "Excluir"
+           
+    }
     func deleteCells()  {
         if tableView.isEditing  == false {
             self.tableView.setEditing(true, animated: true)
+             self.navigationItem.rightBarButtonItem?.title = "Cancelar"
             
         }else{
+             self.navigationItem.rightBarButtonItem?.title = "Excluir"
             self.tableView.setEditing(false, animated: true)
           
         }
         
        
     }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
          produts =  buscarDados()
         tableView.reloadData()
-         self.tableView.setEditing(false, animated: false)
+        
+        configTitleItemBar()
     }
     
     
@@ -105,30 +115,35 @@ extension DesejoController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let commit = produts?[indexPath.row]
-            //container.viewContext.delete(commit)
+//
+          
+            let predicate = NSPredicate(value: true)
+            let ordeby = NSSortDescriptor(key: "id", ascending: true)
+               let listas = cdManager.customSearch("Produto", predicate: predicate, sortDescriptor: ordeby) as! [Produto]
+            
+       
+           guard let media = listas.filter({$0.id == produts?[indexPath.row].id}).first else {return}
+            cdManager.deleteObj(media)
+          
+            
             produts?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
              tableView.separatorStyle = .none
+            
           
+            
+            
         }
-        
-        
-        
-        
-        
         
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      /*
         if let count = produts?.count{
          
-            return 0
+            return count
         }
-*/
-        return 0
+       return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DesejoCell
